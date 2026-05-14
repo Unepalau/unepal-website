@@ -1,0 +1,14 @@
+[
+  {
+    "relation": [
+      "delegate_permission/common.handle_all_urls"
+    ],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.unepal.unepalaustralia",
+      "sha256_cert_fingerprints": [
+        "9A:37:44:13:FC:B1:F6:B4:03:1B:F6:D4:1A:2A:F7:09:28:B2:A2:07:A8:9F:EC:13:B0:F5:AA:2B:3E:72:55:94"
+      ]
+    }
+  }
+]

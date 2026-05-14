@@ -16,6 +16,22 @@ bun dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+## Contact Form Email Setup
+
+The website contact form now submits directly to the backend instead of opening a local mail draft.
+
+Create a `.env.local` file with:
+
+```bash
+RESEND_API_KEY=your_resend_api_key
+CONTACT_FROM_EMAIL="uNepal Contact <onboarding@resend.dev>"
+CONTACT_TO_EMAIL="hello@unepal.com"
+NEXT_PUBLIC_CONTACT_API_URL=https://us-central1-your-project-id.cloudfunctions.net/contact
+```
+
+`CONTACT_FROM_EMAIL` can be replaced with your own verified sending address when your domain is configured in Resend.
+`NEXT_PUBLIC_CONTACT_API_URL` should point to your deployed public contact function so the static site can submit messages in production.
+
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
