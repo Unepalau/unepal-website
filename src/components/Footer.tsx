@@ -1,99 +1,107 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
+const footerGroups = [
+  {
+    title: 'Product',
+    links: [
+      ['Home Feed', '/#features'],
+      ['Hamro TV', '/#hamro-tv'],
+      ['Bazaar', '/#bazaar'],
+      ['Community', '/#community'],
+      ['Business', '/#business'],
+    ],
+  },
+  {
+    title: 'Features',
+    links: [
+      ['Groups', '/#community-spaces'],
+      ['Pages', '/#community-spaces'],
+      ['Events', '/#events'],
+      ['Messages', '/#features'],
+      ['Search', '/#features'],
+    ],
+  },
+  {
+    title: 'Business',
+    links: [
+      ['Business Directory', '/#business'],
+      ['Create Business', '/#profiles'],
+      ['Create Page', '/#profiles'],
+      ['Promote Services', '/#business'],
+    ],
+  },
+  {
+    title: 'Legal',
+    links: [
+      ['Privacy Policy', '/privacy'],
+      ['Terms of Service', '/terms'],
+      ['Community Guidelines', '/community'],
+      ['Child Safety Standards', '/child-safety-standards'],
+    ],
+  },
+  {
+    title: 'Support',
+    links: [
+      ['Contact', '/#contact'],
+      ['Safety Reports', '/#contact'],
+      ['Help', 'mailto:hello@unepal.com'],
+    ],
+  },
+];
+
 export default function Footer() {
   return (
-<footer className="bg-white border-t border-gray-100 pt-16 sm:pt-24 pb-24 lg:pb-12 text-slate-800">
-    <div className="container mx-auto px-6 max-w-7xl">
-      <div className="grid gap-12 lg:gap-16 grid-cols-1 md:grid-cols-12 mb-16">
+    <footer className="bg-[#071632] pb-20 pt-10 text-white lg:pb-10">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid gap-9 lg:grid-cols-[0.9fr_1.7fr]">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-3">
+              <span className="relative h-11 w-11 overflow-hidden rounded-xl bg-white">
+                <Image src="/assets/logo.png" alt="uNepal" fill className="object-contain" />
+              </span>
+              <div>
+                <span className="block text-2xl font-extrabold text-white">uNepal</span>
+                <span className="text-sm font-bold text-white/74">Hamro Social Network for Nepalese everywhere.</span>
+              </div>
+            </Link>
+            <p className="mt-5 max-w-md text-sm font-semibold leading-7 text-white/74">
+              A social media and community platform for Nepalese everywhere, built around posts, groups, pages, Bazaar, Hamro TV, events, businesses, messaging, and local discovery.
+            </p>
+            <div className="mt-5 flex flex-wrap gap-3">
+              {[
+                ['Facebook', 'https://www.facebook.com/unepalsocialnetwork/', 'fa-facebook-f'],
+                ['Instagram', 'https://www.instagram.com/unepalapp/', 'fa-instagram'],
+                ['TikTok', 'https://www.tiktok.com/@unepalapp', 'fa-tiktok'],
+              ].map(([label, href, icon]) => (
+                <a key={label} href={href} className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/8 text-white hover:bg-white/14" aria-label={label}>
+                  <i className={`fa-brands ${icon}`} />
+                </a>
+              ))}
+            </div>
+          </div>
 
-        {/* Brand & Vision */}
-        <div className="md:col-span-5 lg:col-span-4 space-y-6">
-          <Link href="/" className="inline-flex items-center gap-3 mb-2">
-            <Image src="/assets/logo.png" alt="uNepal" width={40} height={40} className="h-10 w-auto drop-shadow-sm object-contain" />
-            <span className="text-2xl font-black text-brand-primary tracking-tight">uNepal</span>
-          </Link>
-          <p className="text-slate-600 leading-relaxed font-medium">
-            A platform for community updates, local discovery, and everyday Nepali life.
-          </p>
-          <p className="text-slate-400 text-sm leading-relaxed">
-            Built for Nepalese communities across Nepal and the diaspora.
-          </p>
+          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-5">
+            {footerGroups.map((group) => (
+              <div key={group.title}>
+                <h4 className="mb-4 text-xs font-extrabold uppercase tracking-[0.16em] text-white/64">{group.title}</h4>
+                <ul className="space-y-3 text-sm font-bold text-white/78">
+                  {group.links.map(([label, href]) => (
+                    <li key={label}>
+                      <Link href={href} className="transition-colors hover:text-white">{label}</Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
         </div>
 
-        {/* Links Grid */}
-        <div className="md:col-span-7 lg:col-span-6 lg:col-start-6 grid grid-cols-2 sm:grid-cols-3 gap-8">
-
-          <div>
-            <h4 className="font-black text-slate-900 mb-5 text-sm uppercase tracking-widest text-brand-primary">Explore</h4>
-            <ul className="space-y-4 text-sm font-bold text-slate-500">
-              <li><Link href="/#features" className="hover:text-brand-primary transition-colors">Features</Link></li>
-              <li><Link href="/#business" className="hover:text-brand-primary transition-colors">Business Pages</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-black text-slate-900 mb-5 text-sm uppercase tracking-widest text-brand-blue">Legal</h4>
-            <ul className="space-y-4 text-sm font-bold text-slate-500">
-              <li><Link href="/privacy" className="hover:text-brand-blue transition-colors">Privacy Policy</Link></li>
-              <li><Link href="/terms" className="hover:text-brand-blue transition-colors">Terms of Service</Link></li>
-              <li><Link href="/community" className="hover:text-brand-blue transition-colors">Community Guidelines</Link></li>
-              <li><Link href="/child-safety-standards" className="hover:text-brand-blue transition-colors">Child Safety
-                  Standards</Link></li>
-            </ul>
-          </div>
-
-          <div>
-            <h4 className="font-black text-slate-900 mb-5 text-sm uppercase tracking-widest text-orange-500">Connect</h4>
-            <ul className="space-y-4 text-sm font-bold text-slate-500">
-              <li>
-                <a href="mailto:hello@unepal.com"
-                  className="hover:text-brand-primary transition-colors flex items-center gap-2 group">
-                  <i className="fa-solid fa-envelope text-slate-300 group-hover:text-brand-primary transition-colors"></i>
-                  Support
-                </a>
-              </li>
-              <li>
-                <a href="https://www.facebook.com/unepalapp"
-                  className="hover:text-[#1877F2] transition-colors flex items-center gap-2 group">
-                  <i className="fa-brands fa-facebook-f text-slate-300 group-hover:text-[#1877F2] transition-colors"></i>
-                  Facebook
-                </a>
-              </li>
-              <li>
-                <a href="https://www.instagram.com/unepalapp/"
-                  className="hover:text-[#E4405F] transition-colors flex items-center gap-2 group">
-                  <i className="fa-brands fa-instagram text-slate-300 group-hover:text-[#E4405F] transition-colors"></i>
-                  Instagram
-                </a>
-              </li>
-              <li>
-                <a href="https://www.tiktok.com/@unepalapp"
-                  className="hover:text-black transition-colors flex items-center gap-2 group">
-                  <i className="fa-brands fa-tiktok text-slate-300 group-hover:text-black transition-colors"></i> TikTok
-                </a>
-              </li>
-            </ul>
-          </div>
-
+        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-xs font-semibold text-white/64 sm:text-sm md:flex-row md:items-center">
+          <p>Built for Nepalese communities across Nepal and around the world.</p>
+          <p>&copy; 2026 uNepal. All rights reserved.</p>
         </div>
       </div>
-
-      {/* Bottom Bar */}
-      <div className="pt-8 border-t border-gray-100 flex flex-col md:flex-row md:items-center justify-between gap-6">
-        <div
-          className="flex items-center gap-2 text-xs sm:text-sm font-bold text-slate-600 bg-slate-50 px-4 py-2 rounded-full border border-slate-200">
-          Made with <i className="fa-solid fa-heart text-brand-primary animate-pulse mx-1"></i> for Nepal
-          <div className="relative w-4 h-4 ml-1 sm:ml-2">
-            <Image src="https://upload.wikimedia.org/wikipedia/commons/9/9b/Flag_of_Nepal.svg" alt="Nepal Flag"
-              fill className="object-contain" />
-          </div>
-        </div>
-        <p className="text-xs sm:text-sm text-slate-400 font-semibold">
-          &copy; 2026 uNepal. All rights reserved.
-        </p>
-      </div>
-    </div>
-  </footer>
+    </footer>
   );
 }

@@ -15,30 +15,38 @@ const urbanist = Urbanist({
 });
 
 export const metadata: Metadata = {
-  title: "uNepal — The community platform for Nepalese worldwide",
-  description: "Join 10,000+ Nepalese on uNepal, the all-in-one community app for housing, jobs, marketplace, events, messaging, local news, and culture. Available worldwide.",
-  keywords: "nepali community app, nepali housing, nepali rentals, nepali jobs app, nepali marketplace, nepali events, nepali news, diaspora community, local noticeboards, nepali games, groups feature, uNepal",
+  title: "uNepal - Hamro Social Network for Nepalese everywhere",
+  description: "uNepal is Hamro Social Network for Nepalese everywhere - bringing posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates into one app.",
+  keywords: "Nepalese community app, Nepalese social network, Nepalese housing, Nepalese rentals, Nepalese jobs app, Nepalese marketplace, Nepalese events, Hamro TV, business directory, uNepal",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/assets/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/assets/logo.png",
+  },
   openGraph: {
     type: "website",
     locale: "en",
-    title: "uNepal — The community platform for Nepalese worldwide",
-    description: "Join 10,000+ Nepalese on uNepal for housing, jobs, marketplace, events, messaging, and local news in one app.",
+    title: "uNepal - Hamro Social Network for Nepalese everywhere",
+    description: "Posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates for Nepalese communities.",
     url: "https://www.unepal.com/",
     siteName: "uNepal",
     images: [
       {
-        url: "https://www.unepal.com/assets/og-image.png",
+        url: "https://www.unepal.com/assets/hero-mockup.jpg",
         width: 1200,
         height: 630,
-        alt: "uNepal app screenshots on phone frames showing Explore, Community, and Calendar views",
+        alt: "uNepal app marketing preview for posts, groups, Bazaar, Hamro TV, events, and business discovery",
       }
     ]
   },
   twitter: {
     card: "summary_large_image",
-    title: "uNepal — The community platform for Nepalese worldwide",
-    description: "Join 10,000+ Nepalese on uNepal for housing, jobs, marketplace, events, messaging, and local news in one app.",
-    images: ["https://www.unepal.com/assets/og-image.png"]
+    title: "uNepal - Hamro Social Network for Nepalese everywhere",
+    description: "Posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates for Nepalese communities.",
+    images: ["https://www.unepal.com/assets/hero-mockup.jpg"]
   }
 };
 

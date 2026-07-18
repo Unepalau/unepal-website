@@ -13,13 +13,13 @@ export const metadata: Metadata = {
     url: 'https://www.unepal.com/download',
     title: 'Download uNepal',
     description: 'Download uNepal for iPhone or Android.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Download uNepal',
     description: 'Download uNepal for iPhone or Android.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
   },
 };
 

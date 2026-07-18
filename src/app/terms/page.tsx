@@ -18,13 +18,13 @@ export const metadata: Metadata = {
     url: 'https://www.unepal.com/terms',
     title: 'Terms & Conditions | uNepal',
     description: 'Read the uNepal terms of service for using the website and mobile app worldwide.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Terms & Conditions | uNepal',
     description: 'Read the uNepal terms of service for using the website and mobile app worldwide.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
   },
 };
 

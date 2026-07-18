@@ -1,114 +1,128 @@
 "use client";
 
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import { ANDROID_PLAY_STORE_URL, IOS_APP_STORE_URL } from '@/lib/storeLinks';
+
+const navItems = [
+  ['Features', '/#features'],
+  ['Community', '/#community'],
+  ['Bazaar', '/#bazaar'],
+  ['Business', '/#business'],
+  ['Contact', '/#contact'],
+];
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
-
+    const handleScroll = () => setIsScrolled(window.scrollY > 18);
+    handleScroll();
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
+  useEffect(() => {
+    document.body.classList.toggle('mobile-menu-open', isMenuOpen);
+    document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+    return () => {
+      document.body.classList.remove('mobile-menu-open');
+      document.body.style.overflow = '';
+    };
+  }, [isMenuOpen]);
+
   return (
-    <header
-      id="header"
-      className={`fixed top-0 inset-x-0 z-50 w-full transition-all duration-300 ${
-        isScrolled ? 'bg-white/95 backdrop-blur-md shadow-sm border-b border-gray-100 py-2' : 'bg-transparent py-4'
-      }`}
-    >
-      <div className="container mx-auto px-6">
-        <div className="flex items-center justify-between">
-          <Link href="/" className="logo-lockup">
-            <div className="relative w-[36px] h-[36px] mr-2">
+    <>
+      {isMenuOpen && (
+        <button
+          type="button"
+          aria-label="Close menu"
+          onClick={() => setIsMenuOpen(false)}
+          className="fixed inset-0 z-40 bg-[#071632]/50 backdrop-blur-sm lg:hidden"
+        />
+      )}
+      <header
+        id="header"
+        className={`fixed inset-x-0 top-0 z-50 border-b transition-all duration-300 ${
+          isScrolled
+            ? 'border-[#E4E6EB] bg-white/94 py-2 shadow-[0_18px_44px_-36px_rgba(7,22,50,0.45)] backdrop-blur-xl'
+            : 'border-transparent bg-white py-2 sm:py-3'
+        }`}
+      >
+        {!isScrolled && (
+          <div className="pointer-events-none absolute inset-x-0 top-full h-16 bg-gradient-to-b from-white via-white/80 to-white/0" />
+        )}
+        <div className="container mx-auto px-4 sm:px-6">
+        <div className="flex items-center justify-between gap-4">
+          <Link href="/" className="logo-lockup" aria-label="uNepal home">
+            <div className="relative h-9 w-9 shrink-0 overflow-hidden rounded-xl bg-white shadow-sm sm:h-10 sm:w-10">
               <Image src="/assets/logo.png" alt="uNepal logo" fill className="object-contain" />
             </div>
             <div className="logo-stack">
-              <span className="logo-text">uNepal</span>
-              <span className="logo-tagline">Hamro Social Network</span>
+              <span className="text-lg font-extrabold leading-none text-brand-primary sm:text-xl">uNepal</span>
+              <span className="mt-1 text-[10px] font-bold text-[#65676B] sm:text-[11px]">Hamro Social Network</span>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-6" aria-label="Primary">
-            <Link href="/#features" className="nav-link font-medium hover:text-brand-primary transition-colors">Features</Link>
-            <Link href="/#explore" className="nav-link font-medium hover:text-brand-primary transition-colors">Explore</Link>
-            <Link href="/#business" className="nav-link font-medium hover:text-brand-primary transition-colors">Business</Link>
-            <Link href="/#contact" className="nav-link font-medium hover:text-brand-primary transition-colors">Contact</Link>
-            <div className="header-store-links" aria-label="Download uNepal app">
-              <a href={ANDROID_PLAY_STORE_URL}
-                className="header-store-link header-store-link--android">
-                <i className="fab fa-google-play header-store-link__icon"></i>
-                <span className="header-store-link__text">
-                  <span className="header-store-link__eyebrow">Get it on</span>
-                  <span className="header-store-link__label">Google Play</span>
-                </span>
-              </a>
-              <a href={IOS_APP_STORE_URL}
-                className="header-store-link header-store-link--ios">
-                <i className="fab fa-apple header-store-link__icon"></i>
-                <span className="header-store-link__text">
-                  <span className="header-store-link__eyebrow">Download on</span>
-                  <span className="header-store-link__label">App Store</span>
-                </span>
-              </a>
-            </div>
+          <nav className="hidden items-center gap-1 lg:flex" aria-label="Primary">
+            {navItems.map(([label, href]) => (
+              <Link
+                key={label}
+                href={href}
+                className="rounded-xl px-3 py-2 text-sm font-extrabold text-[#071632]/72 transition hover:bg-[#FFF2F4] hover:text-brand-primary"
+              >
+                {label}
+              </Link>
+            ))}
           </nav>
 
+          <Link
+            href="/download"
+            className="hidden h-11 items-center justify-center rounded-xl bg-brand-primary px-5 text-sm font-extrabold text-white shadow-[0_14px_30px_-22px_rgba(230,0,35,0.9)] transition hover:bg-brand-blue lg:inline-flex"
+          >
+            Download App
+          </Link>
+
           <button
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-            className="lg:hidden inline-flex items-center justify-center w-10 h-10 rounded-md hover:bg-gray-100 focus:outline-none"
+            onClick={() => setIsMenuOpen((value) => !value)}
+            className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-[#E4E6EB] bg-white text-[#071632] shadow-sm transition hover:bg-[#FFF2F4] focus:outline-none focus:ring-2 focus:ring-brand-primary/25 lg:hidden"
             aria-label="Toggle menu"
             aria-expanded={isMenuOpen}
           >
-            <i className={`fa ${isMenuOpen ? 'fa-times' : 'fa-bars'} text-xl`}></i>
+            <i className={`fa-solid ${isMenuOpen ? 'fa-xmark' : 'fa-bars'} text-lg`} />
           </button>
         </div>
 
-        {/* Mobile Menu */}
         {isMenuOpen && (
-          <div
-            className="lg:hidden p-4 bg-white/95 backdrop-blur-xl rounded-2xl absolute top-full left-4 right-4 mt-2 shadow-2xl border border-gray-100"
-          >
-            <div className="flex flex-col gap-2 text-right items-end w-full">
-              <Link href="/#features" onClick={() => setIsMenuOpen(false)}
-                className="nav-link w-full py-3 px-4 rounded-lg hover:bg-gray-50 text-gray-700 font-medium text-right">Features</Link>
-              <Link href="/#explore" onClick={() => setIsMenuOpen(false)}
-                className="nav-link w-full py-3 px-4 rounded-lg hover:bg-gray-50 text-gray-700 font-medium text-right">Explore</Link>
-              <Link href="/#business" onClick={() => setIsMenuOpen(false)}
-                className="nav-link w-full py-3 px-4 rounded-lg hover:bg-gray-50 text-gray-700 font-medium text-right">Business</Link>
-              <Link href="/#contact" onClick={() => setIsMenuOpen(false)}
-                className="nav-link w-full py-3 px-4 rounded-lg hover:bg-gray-50 text-gray-700 font-medium text-right">Contact</Link>
-
-              <div className="flex flex-col w-full gap-3 mt-2">
-                <a href={ANDROID_PLAY_STORE_URL}
-                  className="store-badge store-badge--android store-badge--large w-full justify-center">
-                  <i className="fab fa-google-play store-badge__icon"></i>
-                  <span className="store-badge__text">
-                    <span className="store-badge__eyebrow">Get it on</span>
-                    <span className="store-badge__label">Google Play</span>
+          <div className="absolute left-0 right-0 top-full overflow-hidden border-t border-[#E4E6EB] bg-white shadow-2xl lg:hidden">
+            <div className="container mx-auto grid gap-1 px-4 py-3">
+              {navItems.map(([label, href]) => (
+                <Link
+                  key={label}
+                  href={href}
+                  onClick={() => setIsMenuOpen(false)}
+                  className="flex items-center justify-between rounded-xl border border-transparent px-3 py-2.5 text-sm font-extrabold text-[#071632] hover:border-[#E4E6EB] hover:bg-[#F8FAFC]"
+                >
+                  <span className="inline-flex items-center gap-3">
+                    <span className="h-2 w-2 rounded-full bg-brand-primary" />
+                    {label}
                   </span>
-                </a>
-                <a href={IOS_APP_STORE_URL}
-                  className="store-badge store-badge--ios store-badge--large w-full justify-center">
-                  <i className="fab fa-apple store-badge__icon"></i>
-                  <span className="store-badge__text">
-                    <span className="store-badge__eyebrow">Download on</span>
-                    <span className="store-badge__label">App Store</span>
-                  </span>
-                </a>
-              </div>
+                  <i className="fa-solid fa-chevron-right text-[10px] text-[#65676B]" />
+                </Link>
+              ))}
+              <Link
+                href="/download"
+                onClick={() => setIsMenuOpen(false)}
+                className="mt-2 inline-flex h-11 items-center justify-center rounded-xl bg-brand-primary px-4 text-sm font-extrabold text-white"
+              >
+                Download App
+              </Link>
             </div>
           </div>
         )}
-      </div>
-    </header>
+        </div>
+      </header>
+    </>
   );
 }
