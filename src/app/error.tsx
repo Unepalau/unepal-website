@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect } from 'react';
-import Link from 'next/link';
+import { useEffect } from "react";
+import Link from "next/link";
 
 export default function Error({
   error,
@@ -25,8 +25,8 @@ export default function Error({
           Something went wrong
         </h2>
         <p className="text-gray-500 mb-8 leading-relaxed">
-          We're sorry, but an unexpected error occurred. Our team has been notified. 
-          Please try refreshing or head back to the homepage.
+          We&apos;re sorry, but an unexpected error occurred. Our team has been
+          notified. Please try refreshing or head back to the homepage.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           <button
@@ -35,7 +35,7 @@ export default function Error({
           >
             <i className="fa-solid fa-rotate-right"></i> Try Again
           </button>
-          <Link 
+          <Link
             href="/"
             className="px-6 py-3 font-bold text-white bg-brand-primary hover:bg-brand-primary-light rounded-full transition-colors flex items-center justify-center gap-2"
           >

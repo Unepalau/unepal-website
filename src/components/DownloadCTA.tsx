@@ -1,64 +1,49 @@
-import Image from 'next/image';
 import FadeIn from './FadeIn';
+import SmartDownloadLink from './SmartDownloadLink';
+import { CompactProductMockup } from './MarketingMockups';
 import { ANDROID_PLAY_STORE_URL, IOS_APP_STORE_URL } from '@/lib/storeLinks';
 
 export default function DownloadCTA() {
   return (
-    <section id="download" className="py-20 sm:py-32 relative overflow-hidden bg-white border-t border-gray-100">
-      <div className="container mx-auto px-6 relative z-10">
-        <FadeIn className="max-w-6xl mx-auto rounded-[3rem] bg-slate-900 overflow-hidden relative shadow-[0_30px_60px_rgba(0,0,0,0.15)] group">
-          {/* Animated Background Effects */}
-          <div className="absolute inset-0 bg-gradient-to-br from-slate-900 via-brand-blue to-slate-900 opacity-95 z-0"></div>
-          <div className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=2000')] mix-blend-overlay opacity-20 object-cover z-0 transition-transform duration-1000 group-hover:scale-105"></div>
+    <section id="download" className="relative overflow-hidden bg-white py-16 sm:py-24 lg:py-28">
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_20%,rgba(230,0,35,0.10),transparent_28%),radial-gradient(circle_at_82%_24%,rgba(0,56,147,0.09),transparent_30%)]" />
+      <div className="container relative mx-auto px-4 sm:px-6">
+        <FadeIn className="grid items-center gap-10 overflow-hidden rounded-[1.75rem] border border-[#E4E6EB] bg-white/88 p-5 shadow-[0_34px_90px_-60px_rgba(7,22,50,0.45)] backdrop-blur sm:p-8 lg:grid-cols-[minmax(0,1fr)_minmax(300px,0.64fr)] lg:p-10">
+          <div className="max-w-3xl text-center lg:text-left">
+            <span className="inline-flex rounded-full bg-[#FFF2F4] px-4 py-2 text-[12px] font-extrabold text-brand-primary">
+              Free on iOS and Android
+            </span>
+            <h2 className="mt-5 max-w-3xl text-[2.25rem] font-extrabold leading-[1.08] text-[#071632] sm:text-[3.35rem]">
+              Start using uNepal from wherever you are.
+            </h2>
+            <p className="mx-auto mt-5 max-w-2xl text-base font-semibold leading-8 text-[#65676B] lg:mx-0">
+              Join Nepalese communities for posts, groups, Bazaar, Hamro TV, events, pages, businesses, and local discovery.
+            </p>
 
-          {/* Premium Glows */}
-          <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-red-500/20 rounded-full blur-[120px] -translate-y-1/2 translate-x-1/3"></div>
-          <div className="absolute bottom-0 left-0 w-[600px] h-[600px] bg-blue-500/30 rounded-full blur-[120px] translate-y-1/2 -translate-x-1/3"></div>
-
-          <div className="relative z-10 p-12 sm:p-20 flex flex-col lg:flex-row items-center justify-between gap-16">
-            {/* Content */}
-            <div className="text-center lg:text-left flex-1 text-white max-w-2xl">
-              <span className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-white/20 text-xs sm:text-sm font-bold tracking-widest uppercase mb-8 shadow-sm">
-                <i className="fa-solid fa-rocket text-red-400"></i> Get the app free
-              </span>
-              <h2 className="text-4xl sm:text-6xl font-black mb-6 tracking-tight leading-[1.1]">
-                Join the network today.
-              </h2>
-              <p className="text-xl text-white/80 mb-12 font-medium leading-relaxed">
-                A single unified platform for everyday Nepali life. Download now to connect with 10,000+ members worldwide.
-              </p>
-
-              <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
-                <a href={ANDROID_PLAY_STORE_URL}
-                  className="store-badge store-badge--android store-badge--large hover:ring-4 ring-offset-4 ring-offset-slate-900 hover:ring-red-500/40 transition-all hover:-translate-y-1 w-full sm:w-auto justify-center">
-                  <i className="fab fa-google-play store-badge__icon"></i>
-                  <span className="store-badge__text">
-                    <span className="store-badge__eyebrow">Get it on</span>
-                    <span className="store-badge__label">Google Play</span>
-                  </span>
-                </a>
-                <a href={IOS_APP_STORE_URL}
-                  className="store-badge store-badge--ios store-badge--large hover:ring-4 ring-offset-4 ring-offset-slate-900 hover:ring-blue-500/40 transition-all hover:-translate-y-1 w-full sm:w-auto justify-center">
-                  <i className="fab fa-apple store-badge__icon"></i>
-                  <span className="store-badge__text">
-                    <span className="store-badge__eyebrow">Download on</span>
-                    <span className="store-badge__label">App Store</span>
-                  </span>
-                </a>
-              </div>
+            <div className="hero-cta-row mt-7 lg:justify-start">
+              <a href={ANDROID_PLAY_STORE_URL} className="hero-cta-badge store-badge store-badge--android store-badge--large justify-center">
+                <i className="fab fa-google-play store-badge__icon" />
+                <span className="store-badge__text">
+                  <span className="store-badge__eyebrow">Get it on</span>
+                  <span className="store-badge__label">Google Play</span>
+                </span>
+              </a>
+              <a href={IOS_APP_STORE_URL} className="hero-cta-badge store-badge store-badge--ios store-badge--large justify-center">
+                <i className="fab fa-apple store-badge__icon" />
+                <span className="store-badge__text">
+                  <span className="store-badge__eyebrow">Download on</span>
+                  <span className="store-badge__label">App Store</span>
+                </span>
+              </a>
             </div>
 
-            {/* Premium QR Code Card */}
-            <div className="hidden lg:flex flex-col items-center gap-6 shrink-0 lg:mr-8 perspective-1000">
-              <div className="p-6 bg-white/10 backdrop-blur-xl rounded-[2rem] border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.3)] transform rotate-y-[-10deg] rotate-x-[10deg] group-hover:rotate-0 transition-all duration-700">
-                <div className="bg-white p-4 rounded-2xl relative w-40 h-40">
-                  <Image src="https://api.qrserver.com/v1/create-qr-code/?size=180x180&data=https://unepal.com.au"
-                    alt="Download QR Code" fill sizes="160px"
-                    className="rounded-xl group-hover:scale-105 transition-transform duration-500" />
-                </div>
-              </div>
-              <p className="text-sm font-bold tracking-[0.2em] uppercase text-white/70 drop-shadow-sm">Scan to Download</p>
-            </div>
+            <SmartDownloadLink className="mt-4 inline-flex h-11 items-center justify-center rounded-xl border border-[#E4E6EB] bg-white px-5 text-sm font-extrabold text-[#071632] transition hover:bg-[#F3F4F6]">
+              Download for this device
+            </SmartDownloadLink>
+          </div>
+
+          <div className="mx-auto w-full max-w-[340px] lg:max-w-[360px]">
+            <CompactProductMockup />
           </div>
         </FadeIn>
       </div>

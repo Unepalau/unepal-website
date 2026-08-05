@@ -1,25 +1,26 @@
-import type { Metadata } from 'next';
+import type { Metadata } from "next";
 
-import DownloadRedirectClient from './DownloadRedirectClient';
+import { SOCIAL_IMAGE } from "@/lib/siteMetadata";
+import DownloadRedirectClient from "./DownloadRedirectClient";
 
 export const metadata: Metadata = {
-  title: 'Download uNepal',
-  description: 'Download uNepal for iPhone or Android.',
+  title: "Download uNepal",
+  description: "Download uNepal for iPhone or Android.",
   alternates: {
-    canonical: 'https://www.unepal.com/download',
+    canonical: "https://www.unepal.com/download",
   },
   openGraph: {
-    type: 'website',
-    url: 'https://www.unepal.com/download',
-    title: 'Download uNepal',
-    description: 'Download uNepal for iPhone or Android.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    type: "website",
+    url: "https://www.unepal.com/download",
+    title: "Download uNepal",
+    description: "Download uNepal for iPhone or Android.",
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
-    card: 'summary_large_image',
-    title: 'Download uNepal',
-    description: 'Download uNepal for iPhone or Android.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    card: "summary_large_image",
+    title: "Download uNepal",
+    description: "Download uNepal for iPhone or Android.",
+    images: [SOCIAL_IMAGE],
   },
 };
 

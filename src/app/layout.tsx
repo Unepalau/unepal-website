@@ -1,45 +1,60 @@
 import type { Metadata } from "next";
-import { Noto_Sans, Urbanist } from "next/font/google";
+import localFont from "next/font/local";
+import { SITE_URL, SOCIAL_IMAGE } from "@/lib/siteMetadata";
 import "./globals.css";
 
-const notoSans = Noto_Sans({
+const notoSans = localFont({
+  src: "./fonts/NotoSans-Variable.ttf",
   variable: "--font-noto-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+  weight: "100 900",
+  display: "swap",
+  fallback: ["Arial", "sans-serif"],
 });
 
-const urbanist = Urbanist({
+const urbanist = localFont({
+  src: "./fonts/Urbanist-Variable.ttf",
   variable: "--font-urbanist",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+  weight: "100 900",
+  display: "swap",
+  fallback: ["Arial", "sans-serif"],
 });
 
 export const metadata: Metadata = {
-  title: "uNepal — The community platform for Nepalese worldwide",
-  description: "Join 10,000+ Nepalese on uNepal, the all-in-one community app for housing, jobs, marketplace, events, messaging, local news, and culture. Available worldwide.",
-  keywords: "nepali community app, nepali housing, nepali rentals, nepali jobs app, nepali marketplace, nepali events, nepali news, diaspora community, local noticeboards, nepali games, groups feature, uNepal",
+  metadataBase: new URL(SITE_URL),
+  title: "uNepal - Hamro Social Network for Nepalese everywhere",
+  description:
+    "uNepal is Hamro Social Network for Nepalese everywhere - bringing posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates into one app.",
+  keywords:
+    "Nepalese community app, Nepalese social network, Nepalese housing, Nepalese rentals, Nepalese jobs app, uNepal Bazaar, Nepalese events, Hamro TV, business directory, uNepal",
+  alternates: {
+    canonical: `${SITE_URL}/`,
+  },
+  manifest: "/manifest.webmanifest",
+  icons: {
+    icon: [
+      { url: "/favicon.ico", sizes: "any" },
+      { url: "/assets/favicon.png", type: "image/png" },
+    ],
+    shortcut: "/favicon.ico",
+    apple: "/assets/logo.png",
+  },
   openGraph: {
     type: "website",
     locale: "en",
-    title: "uNepal — The community platform for Nepalese worldwide",
-    description: "Join 10,000+ Nepalese on uNepal for housing, jobs, marketplace, events, messaging, and local news in one app.",
-    url: "https://www.unepal.com/",
+    title: "uNepal - Hamro Social Network for Nepalese everywhere",
+    description:
+      "Posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates for Nepalese communities.",
+    url: `${SITE_URL}/`,
     siteName: "uNepal",
-    images: [
-      {
-        url: "https://www.unepal.com/assets/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "uNepal app screenshots on phone frames showing Explore, Community, and Calendar views",
-      }
-    ]
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: "summary_large_image",
-    title: "uNepal — The community platform for Nepalese worldwide",
-    description: "Join 10,000+ Nepalese on uNepal for housing, jobs, marketplace, events, messaging, and local news in one app.",
-    images: ["https://www.unepal.com/assets/og-image.png"]
-  }
+    title: "uNepal - Hamro Social Network for Nepalese everywhere",
+    description:
+      "Posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates for Nepalese communities.",
+    images: [SOCIAL_IMAGE],
+  },
 };
 
 export default function RootLayout({
@@ -53,7 +68,10 @@ export default function RootLayout({
       className={`${notoSans.variable} ${urbanist.variable} h-full antialiased scroll-smooth`}
     >
       <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+        <link
+          rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+        />
       </head>
       <body className="min-h-full flex flex-col bg-white text-gray-900 overflow-x-hidden">
         {children}

@@ -1,88 +1,103 @@
-import Image from 'next/image';
-import FadeIn from './FadeIn';
+import FadeIn from "./FadeIn";
+
+const businesses = [
+  ["Learning and tutoring", "Education and training", "fa-graduation-cap"],
+  ["Local groceries", "Food and retail", "fa-basket-shopping"],
+  ["Professional services", "Local services", "fa-briefcase"],
+];
+
+const actions = [
+  ["Create Page", "fa-flag"],
+  ["Create Business", "fa-building"],
+  ["Business Directory", "fa-list"],
+  ["Direct Messages", "fa-message"],
+];
 
 export default function Business() {
   return (
-    <section id="business" className="py-24 sm:py-32 relative overflow-hidden bg-slate-900 text-white">
-      {/* Background with Dark Mode Aesthetics */}
-      <div className="absolute inset-0 z-0 opacity-10 bg-[url('https://images.unsplash.com/photo-1517292987719-0369a794ec0f?auto=format&fit=crop&q=80&w=2000')] mix-blend-overlay object-cover"></div>
-      <div className="absolute inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(0,86,210,0.2),transparent_40%),radial-gradient(circle_at_bottom_right,rgba(227,24,55,0.15),transparent_40%)]"></div>
+    <section id="business" className="bg-white py-16 sm:py-24 lg:py-28">
+      <div className="container mx-auto px-4 sm:px-6">
+        <div className="grid min-w-0 items-center gap-10 lg:grid-cols-[1.04fr_0.96fr] lg:gap-16">
+          <FadeIn className="min-w-0">
+            <div className="relative overflow-hidden rounded-[1.75rem] border border-[#E4E6EB] bg-[#F8FAFC] p-3 shadow-[0_34px_90px_-60px_rgba(7,22,50,0.48)] sm:p-4">
+              <div className="absolute -left-16 top-10 h-52 w-52 rounded-full bg-brand-primary/10 blur-3xl" />
+              <div className="absolute -right-16 bottom-4 h-56 w-56 rounded-full bg-brand-blue/10 blur-3xl" />
+              <div className="relative rounded-[1.35rem] bg-white p-4 sm:p-5">
+                <div className="flex flex-wrap items-center justify-between gap-3 border-b border-[#E4E6EB] pb-4">
+                  <div className="min-w-0">
+                    <p className="text-[11px] font-extrabold uppercase tracking-[0.14em] text-brand-primary">
+                      Local directory
+                    </p>
+                    <p className="mt-1 text-xl font-extrabold text-[#071632]">
+                      Business directory
+                    </p>
+                  </div>
+                  <div className="flex max-w-full flex-wrap rounded-2xl bg-[#F3F4F6] p-1 text-xs font-extrabold text-[#65676B]">
+                    <span className="rounded-xl bg-white px-3 py-2 text-brand-primary shadow-sm sm:px-4">
+                      Area
+                    </span>
+                    <span className="px-3 py-2 sm:px-4">Category</span>
+                    <span className="px-3 py-2 sm:px-4">Map</span>
+                  </div>
+                </div>
 
-      <div className="container mx-auto px-6 relative z-10">
-        <FadeIn className="text-center max-w-4xl mx-auto mb-16 sm:mb-20">
-          <span className="inline-block py-1 px-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-bold tracking-wider text-[10px] sm:text-xs uppercase mb-4 shadow-sm">
-            Pages & Business
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-black tracking-tight leading-tight mb-6">
-            Discover <span className="bg-gradient-to-r from-blue-400 to-cyan-300 bg-clip-text text-transparent">Nepali-owned businesses</span> near you. <i className="fa-solid fa-store text-blue-400 ml-1"></i>
-          </h2>
-          <p className="text-lg sm:text-xl text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Support local by finding restaurants, services, and organisations directly on uNepal Pages.
-          </p>
-        </FadeIn>
-
-        <div className="grid gap-8 lg:grid-cols-3 max-w-7xl mx-auto">
-          <FadeIn>
-            <article className="group bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,86,210,0.15)] h-full flex flex-col">
-              <div className="h-60 relative overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1556742393-d75f468bfcb0?auto=format&fit=crop&q=80&w=900"
-                  alt="Local business discovery" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
-                <div className="absolute left-6 bottom-6 flex flex-wrap gap-2">
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-lg border border-white/10">Directory</span>
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-lg border border-white/10">Local</span>
+                <div className="mt-4 grid gap-3">
+                  {businesses.map(([name, type, icon], index) => (
+                    <article
+                      key={name}
+                      className="rounded-[1.25rem] border border-[#E4E6EB] bg-white p-4 shadow-[0_14px_30px_-28px_rgba(7,22,50,0.55)] transition hover:-translate-y-0.5 hover:shadow-[0_24px_42px_-32px_rgba(7,22,50,0.5)]"
+                    >
+                      <div className="flex items-center gap-4">
+                        <div
+                          className={`flex h-13 w-13 shrink-0 items-center justify-center rounded-2xl ${index === 1 ? "bg-[#F2F5FA] text-brand-blue" : "bg-[#FFF2F4] text-brand-primary"}`}
+                        >
+                          <i className={`fa-solid ${icon} text-lg`} />
+                        </div>
+                        <div className="min-w-0 flex-1">
+                          <p className="truncate text-[1.02rem] font-extrabold text-[#071632]">
+                            {name}
+                          </p>
+                          <p className="mt-1 text-sm font-semibold text-[#65676B]">
+                            {type}
+                          </p>
+                          <p className="mt-1 text-xs font-bold text-[#65676B]">
+                            Illustrative category
+                          </p>
+                        </div>
+                      </div>
+                    </article>
+                  ))}
                 </div>
               </div>
-              <div className="p-8 flex-1">
-                <div className="inline-flex items-center gap-2 text-red-400 font-bold text-sm mb-4">
-                  <i className="fa-solid fa-store"></i> <span>Discover Pages</span>
-                </div>
-                <h3 className="text-2xl font-black mb-3 leading-tight">Find useful local businesses and organisations</h3>
-                <p className="text-slate-400 leading-relaxed">Find businesses through search, Bazaar, and community activity effortlessly.</p>
-              </div>
-            </article>
+            </div>
           </FadeIn>
 
-          <FadeIn delay={0.1}>
-            <article className="group bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,86,210,0.15)] h-full flex flex-col">
-              <div className="h-60 relative overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&q=80&w=900"
-                  alt="Page updates and posts" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
-                <div className="absolute left-6 bottom-6 flex flex-wrap gap-2">
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-lg border border-white/10">Follow</span>
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-lg border border-white/10">Updates</span>
+          <FadeIn delay={0.1} className="min-w-0">
+            <span className="inline-flex rounded-full bg-[#FFF2F4] px-4 py-2 text-[11px] font-extrabold uppercase tracking-[0.14em] text-brand-primary">
+              Business Pages
+            </span>
+            <h2 className="mt-5 max-w-2xl text-[2rem] font-extrabold leading-[1.09] text-[#071632] sm:text-[3.35rem]">
+              Pages and businesses that people can actually discover.
+            </h2>
+            <p className="mt-5 max-w-2xl text-base font-semibold leading-8 text-[#65676B]">
+              Create a page, list a business, share updates, receive messages,
+              and make local services easier to find.
+            </p>
+            <div className="mt-7 grid grid-cols-2 gap-2 sm:gap-3">
+              {actions.map(([label, icon]) => (
+                <div
+                  key={label}
+                  className="flex min-h-24 flex-col justify-between rounded-[1.15rem] border border-[#E4E6EB] bg-white p-3 font-extrabold text-[#071632] shadow-sm sm:min-h-0 sm:flex-row sm:items-center sm:justify-start sm:gap-3 sm:p-4"
+                >
+                  <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#FFF2F4] text-brand-primary">
+                    <i className={`fa-solid ${icon}`} />
+                  </span>
+                  <span className="text-sm leading-tight sm:text-base">
+                    {label}
+                  </span>
                 </div>
-              </div>
-              <div className="p-8 flex-1">
-                <div className="inline-flex items-center gap-2 text-blue-400 font-bold text-sm mb-4">
-                  <i className="fa-solid fa-bullhorn"></i> <span>Follow Updates</span>
-                </div>
-                <h3 className="text-2xl font-black mb-3 leading-tight">Keep up with offers, posts, and announcements</h3>
-                <p className="text-slate-400 leading-relaxed">Follow updates from local businesses to never miss out on community offers.</p>
-              </div>
-            </article>
-          </FadeIn>
-
-          <FadeIn delay={0.2}>
-            <article className="group bg-white/5 backdrop-blur-2xl border border-white/10 rounded-[2rem] overflow-hidden hover:-translate-y-2 transition-all duration-300 hover:shadow-[0_20px_40px_rgba(0,86,210,0.15)] h-full flex flex-col">
-              <div className="h-60 relative overflow-hidden">
-                <Image src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&q=80&w=900"
-                  alt="Direct messages with pages" fill sizes="(max-width: 768px) 100vw, 33vw" className="object-cover transition-transform duration-700 group-hover:scale-110" />
-                <div className="absolute inset-0 bg-gradient-to-t from-slate-900 via-slate-900/40 to-transparent"></div>
-                <div className="absolute left-6 bottom-6 flex flex-wrap gap-2">
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-lg border border-white/10">Message</span>
-                  <span className="bg-white/20 backdrop-blur-md text-white text-[10px] font-bold uppercase tracking-wider py-1 px-3 rounded-lg border border-white/10">Contact</span>
-                </div>
-              </div>
-              <div className="p-8 flex-1">
-                <div className="inline-flex items-center gap-2 text-orange-400 font-bold text-sm mb-4">
-                  <i className="fa-solid fa-comments"></i> <span>Connect Directly</span>
-                </div>
-                <h3 className="text-2xl font-black mb-3 leading-tight">Ask questions and reach out easily</h3>
-                <p className="text-slate-400 leading-relaxed">Message businesses directly as soon as you find them without leaving the app.</p>
-              </div>
-            </article>
+              ))}
+            </div>
           </FadeIn>
         </div>
       </div>

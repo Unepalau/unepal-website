@@ -7,6 +7,7 @@ import PolicyPage, {
   PolicyNote,
   PolicySubsection,
 } from '@/components/policy/PolicyPage';
+import { SOCIAL_IMAGE } from '@/lib/siteMetadata';
 
 export const metadata: Metadata = {
   title: 'Community Guidelines | uNepal',
@@ -21,14 +22,14 @@ export const metadata: Metadata = {
     title: 'Community Guidelines | uNepal',
     description:
       'Read uNepal Community Guidelines for safe, respectful, and legal participation.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Community Guidelines | uNepal',
     description:
       'Community Guidelines for uNepal covering moderation, safety, and respectful participation.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: [SOCIAL_IMAGE],
   },
 };
 

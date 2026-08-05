@@ -18,19 +18,17 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 ## Contact Form Email Setup
 
-The website contact form now submits directly to the backend instead of opening a local mail draft.
+The static website submits contact requests to the deployed `contact` Firebase Function in the `unepalwebsite` project. It never relies on a Next.js `/api/contact` route.
 
-Create a `.env.local` file with:
+The verified endpoint is used by default. To override it for an approved environment, create a `.env.local` file with only the public Function URL:
 
 ```bash
-RESEND_API_KEY=your_resend_api_key
-CONTACT_FROM_EMAIL="uNepal Contact <onboarding@resend.dev>"
-CONTACT_TO_EMAIL="hello@unepal.com"
-NEXT_PUBLIC_CONTACT_API_URL=https://us-central1-your-project-id.cloudfunctions.net/contact
+NEXT_PUBLIC_CONTACT_API_URL=https://us-central1-unepalwebsite.cloudfunctions.net/contact
 ```
 
-`CONTACT_FROM_EMAIL` can be replaced with your own verified sending address when your domain is configured in Resend.
-`NEXT_PUBLIC_CONTACT_API_URL` should point to your deployed public contact function so the static site can submit messages in production.
+The client validates that an override still targets the approved `unepalwebsite` contact Function. An unavailable or invalid endpoint leaves the form non-destructive and displays the established `hello@unepal.com` fallback.
+
+Do not place mail-provider keys or Function-only email configuration in the website root environment. Manage those values in Firebase Functions configuration. Browser and component tests mock requests and must not send real messages.
 
 You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
 

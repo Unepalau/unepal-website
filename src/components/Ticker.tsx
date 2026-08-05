@@ -1,52 +1,38 @@
-import Image from 'next/image';
+const countries = [
+  ['🇳🇵', 'Nepal'],
+  ['🇦🇺', 'Australia'],
+  ['🇺🇸', 'USA'],
+  ['🇬🇧', 'UK'],
+  ['🇨🇦', 'Canada'],
+  ['🇯🇵', 'Japan'],
+  ['🇰🇷', 'South Korea'],
+  ['🇦🇪', 'UAE'],
+];
 
 export default function Ticker() {
   return (
-    <section className="py-10 sm:py-16 bg-white relative z-10 overflow-hidden border-t border-gray-100">
-      <div className="container mx-auto px-6 text-center mb-8">
-        <h3 className="text-xl sm:text-2xl font-black text-gray-900 tracking-tight">
-          Connect locally. <span className="bg-gradient-to-r from-brand-primary to-brand-blue bg-clip-text text-transparent">Belong globally.</span> <i className="fa-solid fa-earth-asia text-brand-primary ml-1"></i>
-        </h3>
-      </div>
-      
-      {/* Seamless scrolling marquee */}
-      <div className="relative flex overflow-x-hidden group">
-        {/* Gradients to hide the hard edges of the scroll */}
-        <div className="absolute top-0 left-0 w-24 h-full bg-gradient-to-r from-white to-transparent z-10 pointer-events-none"></div>
-        <div className="absolute top-0 right-0 w-24 h-full bg-gradient-to-l from-white to-transparent z-10 pointer-events-none"></div>
-        
-        <div className="animate-marquee whitespace-nowrap flex items-center shrink-0" aria-label="Countries where Nepalese use uNepal worldwide">
-          {/* Group 1 */}
-          <div className="flex items-center gap-3 px-3">
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/np.png" width={20} height={15} alt="Nepal flag" className="rounded-sm object-cover" /> Nepal</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/de.png" width={20} height={15} alt="Germany flag" className="rounded-sm object-cover" /> Germany</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/us.png" width={20} height={15} alt="USA flag" className="rounded-sm object-cover" /> USA</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/gb.png" width={20} height={15} alt="UK flag" className="rounded-sm object-cover" /> UK</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/ca.png" width={20} height={15} alt="Canada flag" className="rounded-sm object-cover" /> Canada</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/jp.png" width={20} height={15} alt="Japan flag" className="rounded-sm object-cover" /> Japan</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/kr.png" width={20} height={15} alt="South Korea flag" className="rounded-sm object-cover" /> South Korea</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/ae.png" width={20} height={15} alt="UAE flag" className="rounded-sm object-cover" /> UAE</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/qa.png" width={20} height={15} alt="Qatar flag" className="rounded-sm object-cover" /> Qatar</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/sa.png" width={20} height={15} alt="Saudi Arabia flag" className="rounded-sm object-cover" /> Saudi Arabia</span>
-            <span className="country-chip bg-brand-primary/10 border border-brand-primary/20 rounded-full px-5 py-2 text-sm font-bold text-brand-primary flex items-center gap-2 shadow-sm"><i className="fa-solid fa-earth-asia"></i> Over 50 countries</span>
-          </div>
+    <section className="relative z-10 border-y border-[#E4E6EB] bg-white py-8 sm:py-10">
+      <div className="container mx-auto grid items-center gap-6 px-4 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
+        <div>
+          <p className="text-xs font-extrabold uppercase tracking-[0.12em] text-brand-primary">Nepal and beyond</p>
+          <h2 className="mt-2 text-2xl font-extrabold text-[#071632] sm:text-3xl">
+            Built for Nepalese communities across Nepal and around the world.
+          </h2>
         </div>
 
-        <div className="animate-marquee whitespace-nowrap flex items-center shrink-0" aria-hidden="true">
-          {/* Duplicate Group for infinite scroll */}
-          <div className="flex items-center gap-3 px-3">
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/np.png" width={20} height={15} alt="Nepal flag" className="rounded-sm object-cover" /> Nepal</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/de.png" width={20} height={15} alt="Germany flag" className="rounded-sm object-cover" /> Germany</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/us.png" width={20} height={15} alt="USA flag" className="rounded-sm object-cover" /> USA</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/gb.png" width={20} height={15} alt="UK flag" className="rounded-sm object-cover" /> UK</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/ca.png" width={20} height={15} alt="Canada flag" className="rounded-sm object-cover" /> Canada</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/jp.png" width={20} height={15} alt="Japan flag" className="rounded-sm object-cover" /> Japan</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/kr.png" width={20} height={15} alt="South Korea flag" className="rounded-sm object-cover" /> South Korea</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/ae.png" width={20} height={15} alt="UAE flag" className="rounded-sm object-cover" /> UAE</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/qa.png" width={20} height={15} alt="Qatar flag" className="rounded-sm object-cover" /> Qatar</span>
-            <span className="country-chip bg-gray-50 border border-gray-100 rounded-full px-4 py-2 text-sm font-bold text-gray-700 flex items-center gap-2 shadow-sm"><Image src="https://flagcdn.com/w20/sa.png" width={20} height={15} alt="Saudi Arabia flag" className="rounded-sm object-cover" /> Saudi Arabia</span>
-            <span className="country-chip bg-brand-primary/10 border border-brand-primary/20 rounded-full px-5 py-2 text-sm font-bold text-brand-primary flex items-center gap-2 shadow-sm"><i className="fa-solid fa-earth-asia"></i> Over 50 countries</span>
-          </div>
+        <div className="flex flex-wrap gap-3 lg:justify-end" aria-label="Places where uNepal is useful">
+          {countries.map(([flag, name]) => (
+            <span key={name} className="inline-flex items-center gap-2 rounded-lg border border-[#E4E6EB] bg-[#F3F4F6] px-3 py-2 text-sm font-extrabold text-[#1C1E21]">
+              <span aria-hidden="true" className="text-base leading-none">
+                {flag}
+              </span>
+              {name}
+            </span>
+          ))}
+          <span className="inline-flex items-center gap-2 rounded-lg bg-[#071632] px-4 py-2 text-sm font-extrabold text-white">
+            <i className="fa-solid fa-earth-asia text-brand-primary" />
+            Growing community
+          </span>
         </div>
       </div>
     </section>

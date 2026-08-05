@@ -6,6 +6,7 @@ import PolicyPage, {
   PolicyList,
   PolicySection,
 } from '@/components/policy/PolicyPage';
+import { SOCIAL_IMAGE } from '@/lib/siteMetadata';
 
 export const metadata: Metadata = {
   title: 'Child Safety Standards | uNepal',
@@ -20,13 +21,13 @@ export const metadata: Metadata = {
     title: 'Child Safety Standards | uNepal',
     description:
       'Zero-tolerance policy against CSAE with reporting and enforcement details for the uNepal community.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Child Safety Standards | uNepal',
     description: 'Zero-tolerance policy against CSAE with reporting and enforcement details.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: [SOCIAL_IMAGE],
   },
 };
 
