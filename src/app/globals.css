@@ -5,6 +5,33 @@
   --foreground: #1c1e21;
 }
 
+/* Deliberate keyboard focus treatment shared by interactive marketing controls. */
+.focus-ring:focus-visible,
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+    outline: 3px solid #071632;
+    outline-offset: 3px;
+    box-shadow: 0 0 0 2px #ffffff;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto !important;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
@@ -3747,4 +3774,3 @@ label {
         font-size: 0.75rem;
     }
 }
-

@@ -1,8 +1,8 @@
-import type { ReactNode } from 'react';
-import Link from 'next/link';
+import type { ReactNode } from "react";
+import Link from "next/link";
 
-import Header from '@/components/Header';
-import Footer from '@/components/Footer';
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
 
 type PolicyLink = {
   href: string;
@@ -23,10 +23,10 @@ type PolicyPageProps = {
 };
 
 const sectionLabelClasses =
-  'inline-flex items-center gap-2 rounded-full border border-brand-primary/10 bg-brand-primary/5 px-4 py-2 text-[11px] font-black uppercase tracking-[0.24em] text-brand-primary';
+  "inline-flex items-center gap-2 rounded-full border border-brand-primary/10 bg-brand-primary/5 px-4 py-2 text-[11px] font-black uppercase tracking-[0.24em] text-brand-primary";
 
 const surfaceClasses =
-  'rounded-[2rem] border border-white/70 bg-white/85 shadow-[0_30px_80px_rgba(15,23,42,0.08)] backdrop-blur';
+  "rounded-[2rem] border border-white/70 bg-white/85 shadow-[0_30px_80px_rgba(15,23,42,0.08)] backdrop-blur";
 
 export default function PolicyPage({
   badge,
@@ -51,7 +51,9 @@ export default function PolicyPage({
         </div>
 
         <div className="container mx-auto px-6">
-          <section className={`${surfaceClasses} overflow-hidden p-8 sm:p-10 lg:p-12`}>
+          <section
+            className={`${surfaceClasses} overflow-hidden p-8 sm:p-10 lg:p-12`}
+          >
             <div className="grid gap-10 lg:grid-cols-[minmax(0,1.4fr)_minmax(19rem,0.8fr)] lg:items-start">
               <div>
                 <span className={sectionLabelClasses}>{badge}</span>
@@ -76,10 +78,11 @@ export default function PolicyPage({
                     <span className="block text-base font-black text-slate-900">
                       uNepal
                     </span>
-                    Website and mobile services for Nepalese communities worldwide.
+                    Website and mobile services for Nepalese communities
+                    worldwide.
                   </p>
                   <p>
-                    Contact:{' '}
+                    Contact:{" "}
                     <a
                       href="mailto:hello@unepal.com"
                       className="font-bold text-brand-primary transition-colors hover:text-brand-blue"
@@ -99,7 +102,7 @@ export default function PolicyPage({
                         <a
                           key={item.href}
                           href={item.href}
-                          className="block rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold text-slate-600 transition-all hover:border-slate-200 hover:bg-white hover:text-slate-950"
+                          className="flex min-h-11 items-center rounded-2xl border border-transparent px-4 py-3 text-sm font-semibold text-slate-600 transition-all hover:border-slate-200 hover:bg-white hover:text-slate-950"
                         >
                           {item.label}
                         </a>
@@ -123,7 +126,7 @@ export default function PolicyPage({
                       <Link
                         key={item.href}
                         href={item.href}
-                        className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-brand-primary/25 hover:text-brand-primary"
+                        className="inline-flex min-h-11 items-center rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-slate-700 transition-all hover:-translate-y-0.5 hover:border-brand-primary/25 hover:text-brand-primary"
                       >
                         {item.label}
                       </Link>
@@ -140,10 +143,12 @@ export default function PolicyPage({
                 <div className="mt-12 flex flex-wrap items-center gap-3 border-t border-slate-200 pt-6 text-sm font-bold text-slate-500">
                   {relatedLinks.map((item, index) => (
                     <div key={item.href} className="contents">
-                      {index > 0 ? <span className="text-slate-300">/</span> : null}
+                      {index > 0 ? (
+                        <span className="text-slate-300">/</span>
+                      ) : null}
                       <Link
                         href={item.href}
-                        className="transition-colors hover:text-brand-primary"
+                        className="inline-flex min-h-11 items-center py-1 transition-colors hover:text-brand-primary"
                       >
                         {item.label}
                       </Link>
@@ -161,11 +166,12 @@ export default function PolicyPage({
                   Quick Contact
                 </p>
                 <p className="mt-4 text-sm font-medium leading-7 text-slate-600">
-                  For privacy, moderation, or child-safety concerns, contact our support team directly.
+                  For privacy, moderation, or child-safety concerns, contact our
+                  support team directly.
                 </p>
                 <a
                   href="mailto:hello@unepal.com"
-                  className="mt-5 inline-flex w-full items-center justify-center rounded-2xl bg-slate-950 px-4 py-3 text-sm font-black text-white transition-all hover:-translate-y-0.5 hover:bg-brand-primary"
+                  className="mt-5 inline-flex min-h-11 w-full items-center justify-center rounded-2xl bg-slate-950 px-4 py-3 text-sm font-black text-white transition-all hover:-translate-y-0.5 hover:bg-brand-primary"
                 >
                   Email hello@unepal.com
                 </a>
@@ -205,11 +211,16 @@ export function PolicySection({
   children: ReactNode;
 }) {
   return (
-    <section id={id} className="scroll-mt-28 border-t border-slate-200/80 pt-8 first:border-t-0 first:pt-0">
+    <section
+      id={id}
+      className="scroll-mt-28 border-t border-slate-200/80 pt-8 first:border-t-0 first:pt-0"
+    >
       <h2 className="text-2xl font-black tracking-[-0.03em] text-slate-950 sm:text-[2rem]">
         {title}
       </h2>
-      <div className="mt-4 space-y-4 text-[15px] leading-8 text-slate-600">{children}</div>
+      <div className="mt-4 space-y-4 text-[15px] leading-8 text-slate-600">
+        {children}
+      </div>
     </section>
   );
 }
@@ -225,12 +236,20 @@ export function PolicySubsection({
 }) {
   return (
     <section id={id} className="scroll-mt-28 pt-2">
-      <h3 className="text-lg font-black tracking-[-0.02em] text-slate-900 sm:text-xl">{title}</h3>
-      <div className="mt-3 space-y-4 text-[15px] leading-8 text-slate-600">{children}</div>
+      <h3 className="text-lg font-black tracking-[-0.02em] text-slate-900 sm:text-xl">
+        {title}
+      </h3>
+      <div className="mt-3 space-y-4 text-[15px] leading-8 text-slate-600">
+        {children}
+      </div>
     </section>
   );
 }
 
 export function PolicyList({ children }: { children: ReactNode }) {
-  return <ul className="list-disc space-y-3 pl-6 marker:text-brand-primary">{children}</ul>;
+  return (
+    <ul className="list-disc space-y-3 pl-6 marker:text-brand-primary">
+      {children}
+    </ul>
+  );
 }

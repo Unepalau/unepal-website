@@ -8,6 +8,7 @@ import PolicyPage, {
   PolicySection,
   PolicySubsection,
 } from '@/components/policy/PolicyPage';
+import { SOCIAL_IMAGE } from '@/lib/siteMetadata';
 
 export const metadata: Metadata = {
   title: 'Privacy Policy | uNepal',
@@ -22,14 +23,14 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | uNepal',
     description:
       'Learn how uNepal collects, uses, and protects information across our website and mobile app.',
-    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
+    images: [SOCIAL_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Privacy Policy | uNepal',
     description:
       'Learn how uNepal collects, uses, and protects information across our website and mobile app.',
-    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
+    images: [SOCIAL_IMAGE],
   },
 };
 
