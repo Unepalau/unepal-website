@@ -5,13 +5,6 @@ const nextConfig: NextConfig = {
   reactCompiler: true,
   images: {
     unoptimized: true,
-    remotePatterns: [
-      { protocol: 'https', hostname: 'images.unsplash.com' },
-      { protocol: 'https', hostname: 'api.qrserver.com' },
-      { protocol: 'https', hostname: 'flagcdn.com' },
-      { protocol: 'https', hostname: 'i.pravatar.cc' },
-      { protocol: 'https', hostname: 'cdn-icons-png.flaticon.com' }
-    ]
   }
 };
 
