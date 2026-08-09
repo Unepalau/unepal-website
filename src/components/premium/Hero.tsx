@@ -1,43 +1,53 @@
 import Image from 'next/image';
-import Link from 'next/link';
 import { ANDROID_PLAY_STORE_URL } from '@/lib/storeLinks';
-import AppScreen from './AppScreen';
+import Icon from './Icon';
+
+const dockItems = [
+  ['home', 'Home', '#experience'],
+  ['video', 'Hamro TV', '#experience'],
+  ['bazaar', 'Bazaar', '#experience'],
+  ['community', 'Community', '#community'],
+];
 
 export default function Hero() {
   return (
-    <section className="hero-section overflow-hidden bg-white pt-[7.25rem] sm:pt-[8.5rem]">
-      <div className="site-shell grid min-h-[calc(100vh-5rem)] items-center gap-10 pb-16 lg:grid-cols-[0.82fr_1.18fr] lg:gap-12 lg:pb-20">
-        <div className="relative z-10 py-8 lg:py-16">
-          <span className="eyebrow">The app for Nepalese life</span>
-          <h1 className="mt-6 max-w-[12ch] font-display text-[3.5rem] font-extrabold leading-[0.91] tracking-[-0.065em] text-[#071632] sm:text-7xl lg:text-[5.4rem]">
-            Nepalese people, <span className="text-[#E60023]">closer.</span>
+    <section className="motion-hero overflow-hidden bg-[#071632] pt-[6.75rem] text-white sm:pt-[7.25rem]">
+      <div className="site-shell relative grid min-h-[calc(100vh-6.75rem)] items-center gap-6 pb-36 lg:grid-cols-[0.96fr_1.04fr] lg:gap-0 lg:pb-40">
+        <div className="relative z-10 py-12 lg:py-16">
+          <span className="eyebrow eyebrow--dark">The app for Nepalese life</span>
+          <h1 className="mt-7 font-display text-[3.55rem] font-extrabold leading-[0.91] tracking-[-0.06em] text-[#F7F4EE] sm:text-[4.1rem] lg:text-[4.15rem]">
+            <span className="block">All of Nepalese life,</span>
+            <span className="block text-[#E60023]">moving together.</span>
           </h1>
-          <p className="mt-5 max-w-xl text-[15px] font-medium leading-7 text-[#65676B] sm:mt-7 sm:text-xl sm:leading-9">
-            Posts, community, Bazaar, Hamro TV, events, businesses—and everyday connection for Nepalese people.
+          <p className="mt-6 max-w-xl text-base font-medium leading-8 text-white/66 sm:text-lg sm:leading-8">
+            Posts, Community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.
           </p>
-          <div className="mt-7 grid grid-cols-2 gap-2.5 sm:mt-9 sm:flex sm:gap-3">
-            <a href={ANDROID_PLAY_STORE_URL} aria-label="Get uNepal for Android" className="button button--red justify-center px-3 sm:justify-start sm:px-5"><span className="sm:hidden">Get Android</span><span className="hidden sm:inline">Get uNepal for Android</span></a>
-            <Link href="/download" className="button button--outline justify-center px-3 sm:justify-start sm:px-5"><span className="sm:hidden">iOS status</span><span className="hidden sm:inline">iOS availability</span></Link>
-          </div>
-          <div className="mt-5 flex flex-wrap items-center gap-x-3 gap-y-2 text-xs font-bold text-[#65676B] sm:mt-7 sm:gap-x-5 sm:text-sm">
-            <span className="inline-flex items-center gap-2"><span className="h-2.5 w-2.5 rounded-full bg-[#10B981] shadow-[0_0_0_5px_rgba(16,185,129,.12)]" />Android live</span>
-            <span className="text-[#C9CDD4]" aria-hidden="true">•</span>
-            <span>iOS in review</span>
+          <div className="mt-8 flex flex-wrap gap-3">
+            <a href={ANDROID_PLAY_STORE_URL} aria-label="Get uNepal for Android" className="button bg-[#F7F4EE] px-5 text-[#071632] shadow-[0_16px_36px_rgba(0,0,0,.28)] hover:bg-white">Get uNepal for Android</a>
           </div>
         </div>
 
-        <div className="hero-visual" aria-label="Real uNepal app interface preview">
-          <div className="hero-visual__halo" aria-hidden="true" />
-          <AppScreen src="/assets/app-ui/home-feed.webp" alt="uNepal home feed shown inside a neutral device frame" className="hero-phone" priority />
-          <div className="hero-crop hero-crop--community">
-            <div className="hero-crop__label"><span className="h-2 w-2 rounded-full bg-[#E60023]" /> Community</div>
-            <Image src="/assets/app-ui/community-post.webp" alt="Public uNepal community post interface" width={900} height={975} className="h-auto w-full" priority />
+        <div className="hero-art" aria-label="Graphic representation of uNepal Community, Bazaar, Hamro TV, and Events">
+          <Image src="/assets/brand-graphics/hero-motion-objects.png" alt="" width={1200} height={900} priority className="h-auto w-full object-contain" />
+          <span className="hero-feature-label hero-feature-label--community"><Icon name="community" className="h-4 w-4" />Community</span>
+          <span className="hero-feature-label hero-feature-label--bazaar"><Icon name="bazaar" className="h-4 w-4" />Bazaar</span>
+          <span className="hero-feature-label hero-feature-label--tv"><Icon name="video" className="h-4 w-4" />Hamro TV</span>
+          <span className="hero-feature-label hero-feature-label--events"><Icon name="notification" className="h-4 w-4" />Events</span>
+        </div>
+
+        <div className="hero-dock" aria-label="Explore uNepal">
+          <nav className="grid flex-1 grid-cols-4" aria-label="Product navigation">
+            {dockItems.map(([icon, label, href], index) => (
+              <a key={label} href={href} className={`hero-dock__item ${index === 0 ? 'hero-dock__item--active' : ''}`}>
+                <Icon name={icon} className="h-5 w-5" />
+                <span>{label}</span>
+              </a>
+            ))}
+          </nav>
+          <div className="hero-dock__status">
+            <span><i className="status-dot status-dot--live" />Android 5.0.5 <strong>Live</strong></span>
+            <span><i className="status-dot status-dot--review" />iOS 5.0.5 <strong>Waiting for Review</strong></span>
           </div>
-          <div className="hero-crop hero-crop--bazaar">
-            <div className="hero-crop__label"><span className="h-2 w-2 rounded-full bg-[#0B4EA2]" /> Bazaar</div>
-            <Image src="/assets/app-ui/bazaar-listing.webp" alt="Public uNepal Bazaar listing interface" width={900} height={1108} className="h-auto w-full" priority />
-          </div>
-          <p className="absolute bottom-1 right-2 rounded-full border border-[#E4E6EB] bg-white/92 px-3 py-1.5 text-[11px] font-bold text-[#65676B] shadow-sm backdrop-blur">Captured from uNepal 5.0.5</p>
         </div>
       </div>
     </section>
