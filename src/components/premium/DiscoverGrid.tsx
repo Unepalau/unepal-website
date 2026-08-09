@@ -12,11 +12,11 @@ export default function DiscoverGrid() {
     <section id="discover" className="section section--sm scroll-mt-20 bg-[#F7F4EE]" aria-labelledby="discover-title">
       <div className="site-shell">
         <div className="discover-motion">
-          <Image src="/assets/brand-graphics/discovery-motion-banner.webp" alt="" fill sizes="(max-width: 1280px) 100vw, 1216px" className="object-cover" />
+          <Image src="/assets/brand-graphics/discovery-motion-banner-light.png" alt="" fill sizes="(max-width: 1280px) 100vw, 1216px" className="object-cover" />
           <div className="discover-motion__copy">
-            <span className="eyebrow eyebrow--dark">Discover</span>
-            <h2 id="discover-title" className="mt-6 max-w-lg font-display text-[2.7rem] font-extrabold leading-[.96] tracking-[-0.055em] text-white sm:text-6xl">Useful parts, moving in one rhythm.</h2>
-            <p className="mt-6 max-w-md text-base font-medium leading-8 text-white/66 sm:text-lg">Bazaar, Hamro TV, events, and businesses stay visually connected, so moving through uNepal feels simple.</p>
+            <span className="eyebrow">Discover</span>
+            <h2 id="discover-title" className="mt-6 max-w-lg font-display text-[2.7rem] font-extrabold leading-[.96] tracking-[-0.055em] text-[#071632] sm:text-6xl">Useful parts, moving in one rhythm.</h2>
+            <p className="mt-6 max-w-md text-base font-medium leading-8 text-[#65676B] sm:text-lg">Bazaar, Hamro TV, events, and businesses stay visually connected, so moving through uNepal feels simple.</p>
           </div>
         </div>
 

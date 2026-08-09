@@ -53,4 +53,17 @@
 
 - P3: the final hero artwork is slightly smaller and more spacious than the selected visual. This is intentional to preserve responsive clarity, CTA breathing room, and object legibility across widths.
 
+## Light-theme revision
+
+- User feedback superseded the dark-stage treatment: the large navy/near-black fields felt too dark.
+- The final palette now uses warm ivory, white, pale blue, and restrained uNepal red. Navy is limited to text, icon details, and small controls rather than section backgrounds.
+- The header, hero stage, hero dock, Hamro TV widget, discovery banner, download panel, and footer were all converted to light surfaces.
+- The discovery raster was regenerated as a purpose-built light editorial asset instead of applying a CSS filter. Final project asset: `public/assets/brand-graphics/discovery-motion-banner-light.png`.
+- Desktop evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-desktop.png`.
+- Mobile evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-mobile.png`.
+- Focused discovery evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-discover.png`.
+- Focused download evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-download.png`.
+- Browser verification found no desktop or mobile horizontal overflow, no console errors, one main landmark, no missing image alternatives, and no unnamed buttons.
+- No actionable P0, P1, or P2 findings remain after the light-theme revision.
+
 final result: passed

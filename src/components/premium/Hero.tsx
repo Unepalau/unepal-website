@@ -11,19 +11,19 @@ const dockItems = [
 
 export default function Hero() {
   return (
-    <section className="motion-hero overflow-hidden bg-[#071632] pt-[6.75rem] text-white sm:pt-[7.25rem]">
+    <section className="motion-hero overflow-hidden pt-[6.75rem] text-[#071632] sm:pt-[7.25rem]">
       <div className="site-shell relative grid min-h-[calc(100vh-6.75rem)] items-center gap-6 pb-36 lg:grid-cols-[0.96fr_1.04fr] lg:gap-0 lg:pb-40">
         <div className="relative z-10 py-12 lg:py-16">
-          <span className="eyebrow eyebrow--dark">The app for Nepalese life</span>
-          <h1 className="mt-7 font-display text-[3.55rem] font-extrabold leading-[0.91] tracking-[-0.06em] text-[#F7F4EE] sm:text-[4.1rem] lg:text-[4.15rem]">
+          <span className="eyebrow">The app for Nepalese life</span>
+          <h1 className="mt-7 font-display text-[3.55rem] font-extrabold leading-[0.91] tracking-[-0.06em] text-[#071632] sm:text-[4.1rem] lg:text-[4.15rem]">
             <span className="block">All of Nepalese life,</span>
             <span className="block text-[#E60023]">moving together.</span>
           </h1>
-          <p className="mt-6 max-w-xl text-base font-medium leading-8 text-white/66 sm:text-lg sm:leading-8">
+          <p className="mt-6 max-w-xl text-base font-medium leading-8 text-[#65676B] sm:text-lg sm:leading-8">
             Posts, Community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.
           </p>
           <div className="mt-8 flex flex-wrap gap-3">
-            <a href={ANDROID_PLAY_STORE_URL} aria-label="Get uNepal for Android" className="button bg-[#F7F4EE] px-5 text-[#071632] shadow-[0_16px_36px_rgba(0,0,0,.28)] hover:bg-white">Get uNepal for Android</a>
+            <a href={ANDROID_PLAY_STORE_URL} aria-label="Get uNepal for Android" className="button button--red px-5">Get uNepal for Android</a>
           </div>
         </div>
 

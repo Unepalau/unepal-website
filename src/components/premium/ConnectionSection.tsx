@@ -15,7 +15,7 @@ export default function ConnectionSection() {
             <div className="mt-7 flex flex-wrap gap-2">
               {['Community posts', 'Groups', 'Pages', 'Reactions', 'Replies'].map((item) => <span key={item} className="rounded-full border border-[#071632]/8 bg-white/78 px-4 py-2 text-sm font-bold text-[#071632] backdrop-blur">{item}</span>)}
             </div>
-            <Link href="/community" className="button button--dark mt-8">Explore Community</Link>
+            <Link href="/community" className="button button--red mt-8">Explore Community</Link>
           </div>
         </div>
       </div>

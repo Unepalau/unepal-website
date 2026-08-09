@@ -69,7 +69,7 @@ export default function ProductStrip() {
                 <div className="p-5 sm:p-7">
                   <div className="media-widget">
                     <span className="media-widget__play"><Icon name="video" className="h-9 w-9" /></span>
-                    <div><p className="font-display text-3xl font-extrabold text-white">Hamro TV</p><p className="mt-2 text-sm font-semibold text-white/62">Public video and reels in one visual space.</p></div>
+                    <div><p className="font-display text-3xl font-extrabold text-[#071632]">Hamro TV</p><p className="mt-2 text-sm font-semibold text-[#65676B]">Public video and reels in one visual space.</p></div>
                   </div>
                   <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-[#E4E6EB]"><div className="h-full w-2/5 rounded-full bg-[#E60023]" /></div>
                 </div>
