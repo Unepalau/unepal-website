@@ -1,12 +1,4 @@
-import Contact from '@/components/Contact';
-import Footer from '@/components/Footer';
-import ConnectionSection from '@/components/premium/ConnectionSection';
-import DiscoverGrid from '@/components/premium/DiscoverGrid';
-import DownloadBand from '@/components/premium/DownloadBand';
-import Hero from '@/components/premium/Hero';
-import PremiumHeader from '@/components/premium/PremiumHeader';
-import ProductStrip from '@/components/premium/ProductStrip';
-import TrustStrip from '@/components/premium/TrustStrip';
+import EditorialLanding from '@/components/editorial/EditorialLanding';
 
 export default function Home() {
   const jsonLd = {
@@ -23,17 +15,7 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <PremiumHeader />
-      <main>
-        <Hero />
-        <ProductStrip />
-        <ConnectionSection />
-        <DiscoverGrid />
-        <TrustStrip />
-        <DownloadBand />
-        <Contact />
-      </main>
-      <Footer />
+      <EditorialLanding />
     </>
   );
 }

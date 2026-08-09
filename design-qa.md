@@ -1,69 +1,49 @@
-# uNepal premium graphic landing page — design QA
+# uNepal cinematic editorial landing page — design QA
 
 ## Evidence
 
-- Selected visual target: `design/references/premium-motion-poster-selected.png` (1487 × 1058 px).
-- Final desktop implementation: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-graphic-desktop-1440x1024.png` (1425 × 1013 px capture from a 1440 × 1024 CSS viewport).
-- Final mobile implementation: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-graphic-mobile-390x844.png` (375 × 812 px capture from a 390 × 844 CSS viewport).
-- Full-view combined comparison: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-graphic-desktop-comparison.png`.
-- Focused section evidence:
-  - `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-product-deck.png`
-  - `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-community-banner.png`
-  - `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-discovery-banner.png`
-  - `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-premium-mobile-community.png`
+- Source visual truth, selected option 1: `C:\Users\manoj\.codex\generated_images\019fd406-e0bb-7093-9808-27d822a90518\exec-019640e0-e774-4863-90e2-13901cc79cbd.png` (1536 × 1024 px).
+- Source visual truth, selected option 2: `C:\Users\manoj\.codex\generated_images\019fd406-e0bb-7093-9808-27d822a90518\exec-e380bd3e-edb8-4ca9-ad15-89f563ab3454.png` (1536 × 1024 px).
+- Desktop implementation: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\qa-hybrid-desktop.png` (1425 × 1013 px capture from a 1440 × 1024 CSS viewport at device scale factor 1).
+- Mobile implementation: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\qa-hybrid-mobile.png` (375 × 812 px capture from a 390 × 844 CSS viewport at device scale factor 1).
+- Full-view combined comparison: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\qa-hybrid-comparison.png` (the two selected sources and final desktop implementation on one 4320 × 1024 canvas).
+- Focused discovery evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\qa-hybrid-discovery.png`.
+- Focused Bazaar evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\qa-hybrid-bazaar.png`.
 
-## Normalization
+## Comparison state and normalization
 
-- The selected target and desktop implementation have nearly identical aspect ratios. The 1487 × 1058 source was resized to the 1425 × 1013 implementation capture for the combined comparison; no device frame or browser chrome was included.
-- Desktop state: 1440 × 1024 CSS viewport, public unauthenticated homepage, default hero and Home product tab.
-- Mobile state: 390 × 844 CSS viewport, public unauthenticated homepage, closed navigation menu.
-- The full desktop comparison is sufficient for the above-fold typography, artwork, labels, CTA, dock, and availability states because all are legible at full-view scale. Focused captures were used for the product deck and two supporting graphic sections.
+- Desktop state: public homepage at the top of the page, 1440 × 1024 CSS viewport, default Places discovery state, no browser chrome included.
+- Mobile state: public homepage, 390 × 844 CSS viewport, closed navigation menu.
+- Both 1536 × 1024 source images were proportionally scaled to 1440 × 960 and centered in equal-width comparison slots. The implementation retained its 1425 × 1013 captured pixel size inside the third 1440 × 1024 slot. All inputs use density 1, so no density resampling was required beyond the comparison-canvas fit.
+- Focused captures were used because the three visual chapters and full-width Bazaar banner are too small to judge accurately in the full-page comparison alone.
 
-## Required fidelity surfaces
+## Findings
 
-- Visual direction: passed. The implementation follows the selected deep-navy stage, warm-ivory typography, restrained uNepal red, sweeping motion ribbon, four dimensional app objects, compact labels, and bottom dock.
-- Screenshot restraint: passed. The landing page uses generated brand graphics and functional HTML widgets rather than full-screen app captures or a screenshot wall.
-- Color system: passed. Navy, ivory, red, and a restrained supporting blue replace the earlier multi-color treatment.
-- Typography and hierarchy: passed. The hero preserves the selected two-line headline structure and strong ivory/red contrast at desktop and mobile sizes.
-- App identity: passed. Community, Bazaar, Hamro TV, Events, Home, and the download states are visible through real logo/icon assets, labels, and usable interface elements.
-- Responsive layout: passed. No horizontal overflow was found at either viewport; the graphic composition enters the first mobile viewport and remains legible without crowding the CTA.
-- Content integrity: passed. uNepal is positioned for all Nepalese people, Android 5.0.5 is presented as live, and iOS 5.0.5 is presented as Waiting for Review. No ratings, testimonials, user counts, or other fabricated proof appear.
-- Accessibility: passed for the implemented scope. The homepage has one main landmark and one H1, no image is missing alternative text, no button lacks an accessible name, and keyboard-visible/reduced-motion styles remain present.
+- No actionable P0, P1, or P2 differences remain.
+- Fonts and typography: passed. Newsreader recreates the selected editorial serif character while Noto Sans keeps controls and body copy crisp. Display size, italic emphasis, line height, tracking, and mobile wrapping preserve the intended hierarchy.
+- Spacing and layout rhythm: passed. The implementation combines option 1's image-dominant hero and lower dock with option 2's broad discovery rows. Desktop margins, hero radius, dock placement, section gaps, and mobile stacking remain stable without horizontal overflow.
+- Colors and visual tokens: passed. Warm white, parchment, vermilion, deep blue, and small green/amber status accents match the selected direction without returning to a dark or overly colorful page.
+- Image quality and asset fidelity: passed. All major visual surfaces use purpose-generated raster assets at their intended crops. The exact supplied uNepal symbol is used in the header and footer. Phosphor provides a single consistent icon family; no CSS art, handcrafted SVGs, emoji, placeholders, full app screenshots, or screenshot wall are used.
+- Copy and content: passed. The site says “Nepalese,” represents Nepalese people broadly, presents Android 5.0.5 as available, presents iOS 5.0.5 as Waiting for Review, and includes no fabricated ratings, testimonials, awards, or user counts.
+- Responsive behavior: passed at 1440 × 1024 and 390 × 844. Hero artwork, CTA, discovery controls, chapter imagery, and Bazaar copy remain readable and usable. The mobile navigation opens, closes after a navigation choice, and scrolls to the selected section.
+- Accessibility: passed for the implemented scope. Landmarks, headings, button/link names, image alternatives, keyboard focus styling, status text, reduced-motion handling, and practical mobile tap targets are present.
+- Browser console: no errors. Development-only React and HMR messages were observed; no runtime exception was present.
 
-## Interaction and browser checks
+## Interaction checks
 
-- Home, Hamro TV, Bazaar, and Community product tabs work.
-- Bazaar Local, Country, and Global scope selection works; Global was explicitly exercised.
-- The mobile menu opens and closes.
-- The contact modal opens and closes without sending an external request.
-- `/download` loads with the H1 `Your Nepalese world, ready to go.` and retains the correct Android/iOS availability distinction.
-- Console errors: none during homepage, interaction, responsive, and download-route checks.
+- Primary header navigation and all homepage anchors work.
+- Mobile menu opens, reports its expanded state, closes on selection, and navigates to the chosen section.
+- The five discovery controls update the selected state and prompt, then scroll to their relevant section.
+- Android and iOS download links use the existing store destinations and preserve the correct public release wording.
 
 ## Comparison history
 
-1. P2: the first implementation wrapped the desktop headline across three lines and placed it too high. Fixed with an explicit two-line structure, a wider grid, and corrected display sizing.
-2. P2: the graphic objects lacked the clear product labels visible in the target. Fixed with compact icon-backed Community, Bazaar, Hamro TV, and Events labels.
-3. P2: the Bazaar label clipped against the composition edge. Fixed by moving the label inward.
-4. P2: the hero ended before the desktop viewport and the dock floated too high. Fixed with a viewport-height hero stage and a grounded dock.
-5. P2: one product-section heading exposed internal design language. Replaced with product-facing copy: `One app. Every useful part connected.`
-6. P2: the mobile graphic appeared too late below the fold. Fixed by tightening the mobile hero rhythm and raising the artwork.
-7. Repeated combined comparisons and focused section reviews found no remaining actionable P0, P1, or P2 issues.
+1. P2 — brand lockup scale: the first browser render stretched the square supplied logo into the wordmark slot. Fixed by rendering the exact square symbol at its natural aspect ratio and pairing it with a clean text lockup. The revised header is compact and aligned to both source targets.
+2. P2 — repeated discovery artwork: the first implementation showed the left chapter crop in all three panels. Fixed by positioning the single generated triptych at 0%, -100%, and -200% so each chapter now shows its intended Community, Discover, and Watch scene.
+3. P2 — desktop/mobile resilience: verified after the fixes at both target viewports. No overlap or horizontal overflow remains, the mobile menu interaction passes, and focused visual captures confirm correct imagery and content.
 
-## Residual polish
+## Follow-up polish
 
-- P3: the final hero artwork is slightly smaller and more spacious than the selected visual. This is intentional to preserve responsive clarity, CTA breathing room, and object legibility across widths.
-
-## Light-theme revision
-
-- User feedback superseded the dark-stage treatment: the large navy/near-black fields felt too dark.
-- The final palette now uses warm ivory, white, pale blue, and restrained uNepal red. Navy is limited to text, icon details, and small controls rather than section backgrounds.
-- The header, hero stage, hero dock, Hamro TV widget, discovery banner, download panel, and footer were all converted to light surfaces.
-- The discovery raster was regenerated as a purpose-built light editorial asset instead of applying a CSS filter. Final project asset: `public/assets/brand-graphics/discovery-motion-banner-light.png`.
-- Desktop evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-desktop.png`.
-- Mobile evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-mobile.png`.
-- Focused discovery evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-discover.png`.
-- Focused download evidence: `C:\Users\manoj\.codex\visualizations\2026\08\05\019fd406-e0bb-7093-9808-27d822a90518\unepal-light-premium-download.png`.
-- Browser verification found no desktop or mobile horizontal overflow, no console errors, one main landmark, no missing image alternatives, and no unnamed buttons.
-- No actionable P0, P1, or P2 findings remain after the light-theme revision.
+- P3 — the implementation uses one lightweight community moment in the hero instead of the several floating product snippets in option 1. This is intentional: it combines the restraint requested by the user with option 2's clearer discovery control.
 
 final result: passed

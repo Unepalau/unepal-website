@@ -1,5 +1,8 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
+import '@fontsource/newsreader/400.css';
+import '@fontsource/newsreader/500.css';
+import '@fontsource/newsreader/400-italic.css';
 import './globals.css';
 
 const notoSans = localFont({
