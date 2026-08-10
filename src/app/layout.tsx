@@ -1,71 +1,54 @@
-import type { Metadata } from "next";
-import { Noto_Sans, Urbanist } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import '@fontsource/newsreader/400.css';
+import '@fontsource/newsreader/500.css';
+import '@fontsource/newsreader/400-italic.css';
+import './globals.css';
 
-const notoSans = Noto_Sans({
-  variable: "--font-noto-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const notoSans = localFont({
+  src: '../../public/assets/fonts/NotoSans-Variable.ttf',
+  variable: '--font-noto-sans',
+  display: 'swap',
 });
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+const urbanist = localFont({
+  src: '../../public/assets/fonts/Urbanist-Variable.ttf',
+  variable: '--font-urbanist',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "uNepal - Hamro Social Network for Nepalese everywhere",
-  description: "uNepal is Hamro Social Network for Nepalese everywhere - bringing posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates into one app.",
-  keywords: "Nepalese community app, Nepalese social network, Nepalese housing, Nepalese rentals, Nepalese jobs app, Nepalese marketplace, Nepalese events, Hamro TV, business directory, uNepal",
+  metadataBase: new URL('https://www.unepal.com'),
+  title: { default: 'uNepal — Nepalese people, closer', template: '%s | uNepal' },
+  description: 'Posts, community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.',
+  keywords: ['Nepalese community app', 'Nepalese social network', 'uNepal', 'Hamro TV', 'Nepalese marketplace', 'Nepalese business directory'],
   icons: {
-    icon: [
-      { url: "/favicon.ico", sizes: "any" },
-      { url: "/assets/favicon.png", type: "image/png" },
-    ],
-    shortcut: "/favicon.ico",
-    apple: "/assets/logo.png",
+    icon: [{ url: '/favicon.ico', sizes: 'any' }, { url: '/assets/favicon.png', type: 'image/png' }],
+    shortcut: '/favicon.ico',
+    apple: '/assets/logo.png',
   },
+  alternates: { canonical: '/' },
   openGraph: {
-    type: "website",
-    locale: "en",
-    title: "uNepal - Hamro Social Network for Nepalese everywhere",
-    description: "Posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates for Nepalese communities.",
-    url: "https://www.unepal.com/",
-    siteName: "uNepal",
-    images: [
-      {
-        url: "https://www.unepal.com/assets/hero-mockup.jpg",
-        width: 1200,
-        height: 630,
-        alt: "uNepal app marketing preview for posts, groups, Bazaar, Hamro TV, events, and business discovery",
-      }
-    ]
+    type: 'website',
+    locale: 'en',
+    title: 'uNepal — Nepalese people, closer',
+    description: 'Posts, community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.',
+    url: '/',
+    siteName: 'uNepal',
+    images: [{ url: '/assets/app-ui/og-premium-app.jpg', width: 1200, height: 630, alt: 'Real uNepal app interfaces for community, Bazaar, and discovery' }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "uNepal - Hamro Social Network for Nepalese everywhere",
-    description: "Posts, groups, pages, Bazaar, Hamro TV, events, business discovery, messaging, and local community updates for Nepalese communities.",
-    images: ["https://www.unepal.com/assets/hero-mockup.jpg"]
-  }
+    card: 'summary_large_image',
+    title: 'uNepal — Nepalese people, closer',
+    description: 'Posts, community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.',
+    images: ['/assets/app-ui/og-premium-app.jpg'],
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${notoSans.variable} ${urbanist.variable} h-full antialiased scroll-smooth`}
-    >
-      <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-      </head>
-      <body className="min-h-full flex flex-col bg-white text-gray-900 overflow-x-hidden">
-        {children}
-      </body>
+    <html lang="en" className={`${notoSans.variable} ${urbanist.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

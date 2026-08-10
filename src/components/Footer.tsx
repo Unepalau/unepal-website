@@ -1,105 +1,25 @@
 import Image from 'next/image';
 import Link from 'next/link';
 
-const footerGroups = [
-  {
-    title: 'Product',
-    links: [
-      ['Home Feed', '/#features'],
-      ['Hamro TV', '/#hamro-tv'],
-      ['Bazaar', '/#bazaar'],
-      ['Community', '/#community'],
-      ['Business', '/#business'],
-    ],
-  },
-  {
-    title: 'Features',
-    links: [
-      ['Groups', '/#community-spaces'],
-      ['Pages', '/#community-spaces'],
-      ['Events', '/#events'],
-      ['Messages', '/#features'],
-      ['Search', '/#features'],
-    ],
-  },
-  {
-    title: 'Business',
-    links: [
-      ['Business Directory', '/#business'],
-      ['Create Business', '/#profiles'],
-      ['Create Page', '/#profiles'],
-      ['Promote Services', '/#business'],
-    ],
-  },
-  {
-    title: 'Legal',
-    links: [
-      ['Privacy Policy', '/privacy'],
-      ['Terms of Service', '/terms'],
-      ['Community Guidelines', '/community'],
-      ['Child Safety Standards', '/child-safety-standards'],
-    ],
-  },
-  {
-    title: 'Support',
-    links: [
-      ['Contact', '/#contact'],
-      ['Safety Reports', '/#contact'],
-      ['Help', 'mailto:hello@unepal.com'],
-    ],
-  },
+const links = [
+  ['Privacy', '/privacy'],
+  ['Terms', '/terms'],
+  ['Community guidelines', '/community'],
+  ['Child safety', '/child-safety-standards'],
+  ['Support', '/#contact'],
 ];
 
 export default function Footer() {
   return (
-    <footer className="bg-[#071632] pb-20 pt-10 text-white lg:pb-10">
-      <div className="container mx-auto px-4 sm:px-6">
-        <div className="grid gap-9 lg:grid-cols-[0.9fr_1.7fr]">
-          <div>
-            <Link href="/" className="inline-flex items-center gap-3">
-              <span className="relative h-11 w-11 overflow-hidden rounded-xl bg-white">
-                <Image src="/assets/logo.png" alt="uNepal" fill className="object-contain" />
-              </span>
-              <div>
-                <span className="block text-2xl font-extrabold text-white">uNepal</span>
-                <span className="text-sm font-bold text-white/74">Hamro Social Network for Nepalese everywhere.</span>
-              </div>
-            </Link>
-            <p className="mt-5 max-w-md text-sm font-semibold leading-7 text-white/74">
-              A social media and community platform for Nepalese everywhere, built around posts, groups, pages, Bazaar, Hamro TV, events, businesses, messaging, and local discovery.
-            </p>
-            <div className="mt-5 flex flex-wrap gap-3">
-              {[
-                ['Facebook', 'https://www.facebook.com/unepalsocialnetwork/', 'fa-facebook-f'],
-                ['Instagram', 'https://www.instagram.com/unepalapp/', 'fa-instagram'],
-                ['TikTok', 'https://www.tiktok.com/@unepalapp', 'fa-tiktok'],
-              ].map(([label, href, icon]) => (
-                <a key={label} href={href} className="flex h-10 w-10 items-center justify-center rounded-xl border border-white/10 bg-white/8 text-white hover:bg-white/14" aria-label={label}>
-                  <i className={`fa-brands ${icon}`} />
-                </a>
-              ))}
-            </div>
-          </div>
-
-          <div className="grid gap-7 sm:grid-cols-2 lg:grid-cols-5">
-            {footerGroups.map((group) => (
-              <div key={group.title}>
-                <h4 className="mb-4 text-xs font-extrabold uppercase tracking-[0.16em] text-white/64">{group.title}</h4>
-                <ul className="space-y-3 text-sm font-bold text-white/78">
-                  {group.links.map(([label, href]) => (
-                    <li key={label}>
-                      <Link href={href} className="transition-colors hover:text-white">{label}</Link>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-8 flex flex-col justify-between gap-4 border-t border-white/10 pt-6 text-xs font-semibold text-white/64 sm:text-sm md:flex-row md:items-center">
-          <p>Built for Nepalese communities across Nepal and around the world.</p>
-          <p>&copy; 2026 uNepal. All rights reserved.</p>
+    <footer className="border-t border-[#071632]/8 bg-white py-9 text-[#071632]">
+      <div className="site-shell grid gap-8 md:grid-cols-[auto_1fr] md:items-center">
+        <Link href="/" className="flex items-center gap-3">
+          <span className="grid h-11 w-11 place-items-center overflow-hidden rounded-[14px] bg-white"><Image src="/assets/logo.png" alt="" width={42} height={42} className="object-contain" /></span>
+          <div><span className="block font-display text-xl font-extrabold">uNepal</span><span className="text-xs font-semibold text-[#65676B]">Nepalese people, closer.</span></div>
+        </Link>
+        <div className="md:justify-self-end">
+          <nav className="flex flex-wrap gap-x-5 gap-y-3" aria-label="Footer navigation">{links.map(([label, href]) => <Link key={label} href={href} className="text-sm font-bold text-[#65676B] transition hover:text-[#E60023]">{label}</Link>)}</nav>
+          <p className="mt-4 text-xs font-medium text-[#8A8D91] md:text-right">© 2026 uNepal. Built for Nepalese people in Nepal and around the world.</p>
         </div>
       </div>
     </footer>
