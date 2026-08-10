@@ -1,63 +1,51 @@
-import type { Metadata } from "next";
-import { Noto_Sans, Urbanist } from "next/font/google";
-import "./globals.css";
+import type { Metadata } from 'next';
+import localFont from 'next/font/local';
+import './globals.css';
 
-const notoSans = Noto_Sans({
-  variable: "--font-noto-sans",
-  subsets: ["latin"],
-  weight: ["400", "500", "600", "700"],
+const notoSans = localFont({
+  src: '../../public/assets/fonts/NotoSans-Variable.ttf',
+  variable: '--font-noto-sans',
+  display: 'swap',
 });
 
-const urbanist = Urbanist({
-  variable: "--font-urbanist",
-  subsets: ["latin"],
-  weight: ["500", "600", "700", "800"],
+const urbanist = localFont({
+  src: '../../public/assets/fonts/Urbanist-Variable.ttf',
+  variable: '--font-urbanist',
+  display: 'swap',
 });
 
 export const metadata: Metadata = {
-  title: "uNepal — The community platform for Nepalese worldwide",
-  description: "Join 10,000+ Nepalese on uNepal, the all-in-one community app for housing, jobs, marketplace, events, messaging, local news, and culture. Available worldwide.",
-  keywords: "nepali community app, nepali housing, nepali rentals, nepali jobs app, nepali marketplace, nepali events, nepali news, diaspora community, local noticeboards, nepali games, groups feature, uNepal",
+  metadataBase: new URL('https://www.unepal.com'),
+  title: { default: 'uNepal — Nepalese people, closer', template: '%s | uNepal' },
+  description: 'Posts, community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.',
+  keywords: ['Nepalese community app', 'Nepalese social network', 'uNepal', 'Hamro TV', 'Nepalese marketplace', 'Nepalese business directory'],
+  icons: {
+    icon: [{ url: '/favicon.ico', sizes: 'any' }, { url: '/assets/favicon.png', type: 'image/png' }],
+    shortcut: '/favicon.ico',
+    apple: '/assets/logo.png',
+  },
+  alternates: { canonical: '/' },
   openGraph: {
-    type: "website",
-    locale: "en",
-    title: "uNepal — The community platform for Nepalese worldwide",
-    description: "Join 10,000+ Nepalese on uNepal for housing, jobs, marketplace, events, messaging, and local news in one app.",
-    url: "https://www.unepal.com/",
-    siteName: "uNepal",
-    images: [
-      {
-        url: "https://www.unepal.com/assets/og-image.png",
-        width: 1200,
-        height: 630,
-        alt: "uNepal app screenshots on phone frames showing Explore, Community, and Calendar views",
-      }
-    ]
+    type: 'website',
+    locale: 'en',
+    title: 'uNepal — Nepalese people, closer',
+    description: 'Posts, community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.',
+    url: '/',
+    siteName: 'uNepal',
+    images: [{ url: '/assets/app-ui/og-premium-app.jpg', width: 1200, height: 630, alt: 'Real uNepal app interfaces for community, Bazaar, and discovery' }],
   },
   twitter: {
-    card: "summary_large_image",
-    title: "uNepal — The community platform for Nepalese worldwide",
-    description: "Join 10,000+ Nepalese on uNepal for housing, jobs, marketplace, events, messaging, and local news in one app.",
-    images: ["https://www.unepal.com/assets/og-image.png"]
-  }
+    card: 'summary_large_image',
+    title: 'uNepal — Nepalese people, closer',
+    description: 'Posts, community, Bazaar, Hamro TV, events, businesses, and everyday connection for Nepalese people.',
+    images: ['/assets/app-ui/og-premium-app.jpg'],
+  },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html
-      lang="en"
-      className={`${notoSans.variable} ${urbanist.variable} h-full antialiased scroll-smooth`}
-    >
-      <head>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-      </head>
-      <body className="min-h-full flex flex-col bg-white text-gray-900 overflow-x-hidden">
-        {children}
-      </body>
+    <html lang="en" className={`${notoSans.variable} ${urbanist.variable}`}>
+      <body>{children}</body>
     </html>
   );
 }

@@ -22,14 +22,14 @@ export const metadata: Metadata = {
     title: 'Privacy Policy | uNepal',
     description:
       'Learn how uNepal collects, uses, and protects information across our website and mobile app.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
   },
   twitter: {
     card: 'summary_large_image',
     title: 'Privacy Policy | uNepal',
     description:
       'Learn how uNepal collects, uses, and protects information across our website and mobile app.',
-    images: ['https://www.unepal.com/assets/og-image.png'],
+    images: ['https://www.unepal.com/assets/hero-mockup.jpg'],
   },
 };
 
