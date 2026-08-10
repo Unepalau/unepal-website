@@ -1,4 +1,4 @@
-import EditorialLanding from '@/components/editorial/EditorialLanding';
+import LandingPage from '@/components/landing/LandingPage';
 
 export default function Home() {
   const jsonLd = {
@@ -15,7 +15,7 @@ export default function Home() {
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
-      <EditorialLanding />
+      <LandingPage />
     </>
   );
 }
