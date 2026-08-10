@@ -2,16 +2,15 @@
 
 import Image from 'next/image';
 import {
-  AndroidLogo,
-  AppleLogo,
   ArrowRight,
   CalendarBlank,
   ChatCircleText,
+  Compass,
   Handbag,
   List,
-  MagnifyingGlass,
   MapPin,
   Play,
+  Sparkle,
   UsersThree,
   X,
 } from '@phosphor-icons/react';
@@ -19,29 +18,71 @@ import { useState } from 'react';
 import { ANDROID_PLAY_STORE_URL, IOS_APP_STORE_URL } from '@/lib/storeLinks';
 import styles from './EditorialLanding.module.css';
 
-const discoveryItems = [
-  { id: 'places', label: 'Places', prompt: 'Find places across Nepal', Icon: MapPin, target: '#discover' },
-  { id: 'community', label: 'Community', prompt: 'Find a community near you', Icon: UsersThree, target: '#community' },
-  { id: 'videos', label: 'Videos', prompt: 'Watch stories from Nepal', Icon: Play, target: '#watch' },
-  { id: 'bazaar', label: 'Bazaar', prompt: 'Explore the local Bazaar', Icon: Handbag, target: '#bazaar' },
-  { id: 'events', label: 'Events', prompt: 'See what is happening nearby', Icon: CalendarBlank, target: '#events' },
+const productViews = [
+  {
+    id: 'community',
+    label: 'Community',
+    title: 'Your people, in one place.',
+    copy: 'Follow everyday moments, join local conversations and stay close to the communities that matter.',
+    image: '/assets/app-ui/home-feed.webp',
+    alt: 'The uNepal community home feed',
+    Icon: UsersThree,
+  },
+  {
+    id: 'bazaar',
+    label: 'Bazaar',
+    title: 'Local finds, easier to discover.',
+    copy: 'Browse useful listings and connect with the people and businesses behind them.',
+    image: '/assets/app-ui/bazaar-marketplace.webp',
+    alt: 'The uNepal Bazaar marketplace',
+    Icon: Handbag,
+  },
+  {
+    id: 'watch',
+    label: 'Hamro TV',
+    title: 'A fresh view of Nepal.',
+    copy: 'Move through videos, culture and stories made for quick, enjoyable discovery.',
+    image: '/assets/app-ui/hamro-tv.webp',
+    alt: 'Hamro TV inside the uNepal app',
+    Icon: Play,
+  },
+  {
+    id: 'events',
+    label: 'Events',
+    title: 'Know what is happening next.',
+    copy: 'Find celebrations, gatherings and useful dates without leaving the app.',
+    image: '/assets/app-ui/nepali-calendar-events.webp',
+    alt: 'Nepalese calendar and events inside uNepal',
+    Icon: CalendarBlank,
+  },
 ] as const;
 
-const chapters = [
-  { id: 'community', number: '01', title: 'Connect locally', copy: 'Join the conversations, groups and everyday moments that matter to you.', Icon: UsersThree },
-  { id: 'discover', number: '02', title: 'Discover nearby', copy: 'Move from trusted places to useful local businesses without losing your flow.', Icon: MapPin },
-  { id: 'watch', number: '03', title: 'Share the moment', copy: 'Watch short stories, culture and community updates made for the way you browse.', Icon: Play },
+const essentials = [
+  { title: 'Community', copy: 'Conversations with context.', Icon: UsersThree },
+  { title: 'Discover', copy: 'Places worth knowing.', Icon: Compass },
+  { title: 'Hamro TV', copy: 'Stories with a pulse.', Icon: Play },
+  { title: 'Bazaar', copy: 'Local value, easier to find.', Icon: Handbag },
+  { title: 'Events', copy: 'What is happening next.', Icon: CalendarBlank },
 ] as const;
+
+function StoreBadges({ compact = false }: { compact?: boolean }) {
+  return (
+    <div className={`${styles.storeBadges} ${compact ? styles.storeBadgesCompact : ''}`} aria-label="Download uNepal">
+      <a className={styles.appleBadge} href={IOS_APP_STORE_URL} target="_blank" rel="noreferrer" aria-label="Download uNepal on the App Store">
+        <Image src="/assets/store-badges/app-store.svg" alt="Download on the App Store" width={120} height={40} />
+      </a>
+      <a className={styles.googleBadge} href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer" aria-label="Get uNepal on Google Play">
+        <Image src="/assets/store-badges/google-play.png" alt="Get it on Google Play" width={646} height={250} />
+      </a>
+    </div>
+  );
+}
 
 export default function EditorialLanding() {
-  const [activeDiscovery, setActiveDiscovery] = useState<(typeof discoveryItems)[number]['id']>('places');
+  const [activeView, setActiveView] = useState<(typeof productViews)[number]['id']>('community');
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const selectedDiscovery = discoveryItems.find((item) => item.id === activeDiscovery) ?? discoveryItems[0];
-
-  const chooseDiscovery = (item: (typeof discoveryItems)[number]) => {
-    setActiveDiscovery(item.id);
-    document.querySelector(item.target)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-  };
+  const selectedView = productViews.find((item) => item.id === activeView) ?? productViews[0];
+  const SelectedIcon = selectedView.Icon;
 
   return (
     <div className={styles.page}>
@@ -52,13 +93,12 @@ export default function EditorialLanding() {
         </a>
 
         <nav className={styles.desktopNav} aria-label="Primary navigation">
-          <a href="#community">Community</a>
+          <a href="#inside">Inside the app</a>
           <a href="#discover">Discover</a>
-          <a href="#bazaar">Bazaar</a>
           <a href="#about">About</a>
         </nav>
 
-        <a className={styles.headerCta} href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer">
+        <a className={styles.headerCta} href="#download">
           Get the app <ArrowRight weight="bold" aria-hidden="true" />
         </a>
 
@@ -68,174 +108,120 @@ export default function EditorialLanding() {
 
         {mobileMenuOpen ? (
           <nav className={styles.mobileNav} aria-label="Mobile navigation">
-            {['Community', 'Discover', 'Bazaar', 'About'].map((label) => (
-              <a key={label} href={`#${label.toLowerCase()}`} onClick={() => setMobileMenuOpen(false)}>{label}</a>
-            ))}
-            <a className={styles.mobileDownload} href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer">Get the app</a>
+            <a href="#inside" onClick={() => setMobileMenuOpen(false)}>Inside the app</a>
+            <a href="#discover" onClick={() => setMobileMenuOpen(false)}>Discover</a>
+            <a href="#about" onClick={() => setMobileMenuOpen(false)}>About</a>
+            <a className={styles.mobileDownload} href="#download" onClick={() => setMobileMenuOpen(false)}>Get the app</a>
           </nav>
         ) : null}
       </header>
 
       <main id="top">
         <section className={styles.hero} aria-labelledby="hero-title">
-          <div className={styles.heroImage}>
-            <Image
-              src="/assets/editorial/hero-nepalese-life.webp"
-              alt="Nepalese people connecting in a lively Kathmandu neighbourhood"
-              fill
-              priority
-              sizes="100vw"
-              className={styles.cover}
-            />
-          </div>
-
-          <div className={styles.heroShade} aria-hidden="true" />
           <div className={styles.heroCopy}>
-            <p className={styles.eyebrow}>The everyday app for Nepal</p>
-            <h1 id="hero-title">One place <em>for</em><br />Nepalese life.</h1>
-            <p className={styles.heroIntro}>Community, Bazaar, short videos, events and local discovery—brought together with purpose.</p>
-
-            <div className={styles.heroActions}>
-              <a className={styles.primaryButton} href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer">
-                Get uNepal for Android <ArrowRight weight="bold" aria-hidden="true" />
-              </a>
-              <a className={styles.textLink} href="#discover">Explore the experience <span aria-hidden="true">↓</span></a>
-            </div>
-
+            <div className={styles.heroPill}><Sparkle weight="fill" aria-hidden="true" /> One app for Nepalese life</div>
+            <h1 id="hero-title">Everything Nepalese.<br /><span>All in one app.</span></h1>
+            <p className={styles.heroIntro}>Community, local discovery, Bazaar, videos and events—thoughtfully brought together in uNepal.</p>
+            <StoreBadges />
+            <a className={styles.exploreLink} href="#inside">See what is inside <ArrowRight weight="bold" aria-hidden="true" /></a>
           </div>
 
-          <aside className={styles.heroMoment} aria-label="Featured community moment">
-            <span className={styles.momentIcon}><ChatCircleText weight="fill" aria-hidden="true" /></span>
-            <div><small>Community</small><strong>Morning in Kathmandu</strong></div>
-            <span className={styles.momentMeta}>Now</span>
-          </aside>
-
-          <div className={styles.discoveryDock} role="search" aria-label="Discover uNepal">
-            <div className={styles.searchPrompt}>
-              <MagnifyingGlass weight="bold" aria-hidden="true" />
-              <span>{selectedDiscovery.prompt}</span>
+          <div className={styles.productStage} aria-label="A preview of the uNepal app">
+            <div className={styles.stageGlow} aria-hidden="true" />
+            <div className={styles.phoneFrame}>
+              <div className={styles.phoneSpeaker} aria-hidden="true" />
+              <div className={styles.phoneScreen}>
+                <Image src="/assets/app-ui/home-feed.webp" alt="The uNepal app home feed" width={720} height={1600} priority sizes="(max-width: 800px) 72vw, 340px" />
+              </div>
             </div>
-            <div className={styles.discoveryTabs} role="tablist" aria-label="Discovery categories">
-              {discoveryItems.map((item) => {
-                const Icon = item.Icon;
-                return (
-                <button
-                  key={item.id}
-                  type="button"
-                  role="tab"
-                  aria-selected={activeDiscovery === item.id}
-                  className={activeDiscovery === item.id ? styles.activeDiscovery : undefined}
-                  onClick={() => chooseDiscovery(item)}
-                >
-                  <Icon weight={activeDiscovery === item.id ? 'fill' : 'regular'} aria-hidden="true" />
-                  <span>{item.label}</span>
-                </button>
-                );
-              })}
+
+            <div className={`${styles.appWidget} ${styles.communityWidget}`}>
+              <span><ChatCircleText weight="fill" aria-hidden="true" /></span>
+              <div><small>Community</small><strong>See what your people are sharing</strong></div>
+            </div>
+            <div className={`${styles.appWidget} ${styles.placesWidget}`}>
+              <span><MapPin weight="fill" aria-hidden="true" /></span>
+              <div><small>Nearby</small><strong>Discover places around you</strong></div>
+            </div>
+            <div className={styles.quickRail} aria-label="uNepal essentials">
+              {essentials.slice(0, 4).map(({ title, Icon }) => (
+                <div key={title}><Icon weight="fill" aria-hidden="true" /><span>{title}</span></div>
+              ))}
             </div>
           </div>
         </section>
 
-        <section id="discover" className={styles.discoverySection} aria-labelledby="discovery-title">
-          <div className={styles.sectionLead}>
-            <div>
-              <p className={styles.kicker}>Made for everyday Nepalese life</p>
-              <h2 id="discovery-title">Everything you need.<br /><em>All in one place.</em></h2>
-            </div>
-            <p>Move from conversations to places, stories and events without jumping between disconnected experiences.</p>
+        <section id="discover" className={styles.lifeBanner} aria-labelledby="life-banner-title">
+          <Image src="/assets/editorial/hero-nepalese-life.webp" alt="Nepalese people connecting in a lively Kathmandu neighbourhood" fill sizes="100vw" className={styles.cover} />
+          <div className={styles.lifeShade} aria-hidden="true" />
+          <div className={styles.lifeCopy}>
+            <p>Made for all Nepalese people</p>
+            <h2 id="life-banner-title">From your neighbourhood<br />to all of Nepal.</h2>
+          </div>
+        </section>
+
+        <section id="inside" className={styles.insideSection} aria-labelledby="inside-title">
+          <div className={styles.sectionHeading}>
+            <p className={styles.kicker}>Meet the app</p>
+            <h2 id="inside-title">One smooth experience.<br /><span>Many ways to belong.</span></h2>
+            <p>Tap through a few of the real experiences already inside uNepal.</p>
           </div>
 
-          <div className={styles.chapterGrid}>
-            {chapters.map(({ id, number, title, copy, Icon }, index) => (
-              <article id={id} className={styles.chapter} key={id}>
-                <div className={styles.chapterImage}>
-                  <Image
-                    src="/assets/editorial/discovery-triptych.webp"
-                    alt=""
-                    width={2048}
-                    height={683}
-                    sizes="(max-width: 800px) 100vw, 33vw"
-                    loading={index === 0 ? 'eager' : 'lazy'}
-                    className={styles.triptychImage}
-                    style={{ left: `${index * -100}%` }}
-                  />
-                </div>
-                <div className={styles.chapterOverlay} aria-hidden="true" />
-                <span className={styles.chapterNumber}>{number}</span>
-                <div className={styles.chapterCopy}>
-                  <span><Icon weight="fill" aria-hidden="true" /></span>
-                  <div><h3>{title}</h3><p>{copy}</p></div>
-                </div>
+          <div className={styles.productTabs} role="tablist" aria-label="Explore uNepal features">
+            {productViews.map(({ id, label, Icon }) => (
+              <button key={id} id={`product-tab-${id}`} type="button" role="tab" aria-controls="product-panel" aria-selected={activeView === id} className={activeView === id ? styles.activeProductTab : undefined} onClick={() => setActiveView(id)}>
+                <Icon weight={activeView === id ? 'fill' : 'regular'} aria-hidden="true" />
+                {label}
+              </button>
+            ))}
+          </div>
+
+          <div id="product-panel" className={styles.productDemo} role="tabpanel" aria-labelledby={`product-tab-${selectedView.id}`}>
+            <div className={styles.demoCopy}>
+              <span className={styles.demoIcon}><SelectedIcon weight="fill" aria-hidden="true" /></span>
+              <p className={styles.demoLabel}>{selectedView.label}</p>
+              <h3>{selectedView.title}</h3>
+              <p>{selectedView.copy}</p>
+              <a href="#download">Get uNepal <ArrowRight weight="bold" aria-hidden="true" /></a>
+            </div>
+            <div className={styles.demoVisual}>
+              <div className={styles.demoScreen}>
+                <Image key={selectedView.image} src={selectedView.image} alt={selectedView.alt} width={720} height={1600} sizes="(max-width: 800px) 88vw, 520px" />
+              </div>
+              <span className={styles.demoCaption}>Actual uNepal app experience</span>
+            </div>
+          </div>
+        </section>
+
+        <section id="about" className={styles.essentialsSection} aria-labelledby="essentials-title">
+          <div className={styles.essentialsLead}>
+            <p className={styles.kicker}>Everything works together</p>
+            <h2 id="essentials-title">Less switching.<br />More living.</h2>
+          </div>
+          <div className={styles.essentialsGrid}>
+            {essentials.map(({ title, copy, Icon }, index) => (
+              <article className={styles.essentialCard} key={title}>
+                <span className={styles.cardNumber}>0{index + 1}</span>
+                <span className={styles.cardIcon}><Icon weight="fill" aria-hidden="true" /></span>
+                <h3>{title}</h3>
+                <p>{copy}</p>
               </article>
             ))}
           </div>
         </section>
 
-        <section id="bazaar" className={styles.bazaarSection} aria-labelledby="bazaar-title">
-          <Image
-            src="/assets/editorial/bazaar-culture.webp"
-            alt="Nepalese artisans and local craft at a community market"
-            fill
-            sizes="100vw"
-            className={styles.cover}
-          />
-          <div className={styles.bazaarCopy}>
-            <p className={styles.lightKicker}>Bazaar & culture</p>
-            <h2 id="bazaar-title">Shop local.<br />Celebrate Nepal.</h2>
-            <p>Discover locally made goods, trusted businesses and events that keep culture moving.</p>
-            <a href="#download">Explore uNepal <ArrowRight weight="bold" aria-hidden="true" /></a>
-          </div>
-          <div className={styles.marketNote}>
-            <Handbag weight="fill" aria-hidden="true" />
-            <div><small>From the Bazaar</small><strong>Made close to home</strong></div>
-          </div>
-          <div id="events" className={styles.eventNote}>
-            <CalendarBlank weight="fill" aria-hidden="true" />
-            <div><small>Upcoming events</small><strong>See what’s happening nearby</strong></div>
-          </div>
-        </section>
-
-        <section id="about" className={styles.aboutSection} aria-labelledby="about-title">
-          <p className={styles.kicker}>One connected experience</p>
-          <div className={styles.aboutGrid}>
-            <h2 id="about-title">Less switching.<br />More belonging.</h2>
-            <p>uNepal brings the useful parts of Nepalese digital life into one considered place—designed for people in Nepal and Nepalese communities everywhere.</p>
-          </div>
-          <div className={styles.featureRail}>
-            {[
-              ['Community', 'Conversations with context', UsersThree],
-              ['Discover', 'Places worth knowing', MapPin],
-              ['Watch', 'Stories with a pulse', Play],
-              ['Bazaar', 'Local value, easier to find', Handbag],
-              ['Events', 'What is happening next', CalendarBlank],
-            ].map(([title, copy, Icon], index) => (
-              <div className={styles.featureItem} key={String(title)}>
-                <span className={styles.featureIndex}>0{index + 1}</span>
-                <Icon weight="regular" aria-hidden="true" />
-                <strong>{String(title)}</strong>
-                <small>{String(copy)}</small>
-              </div>
-            ))}
-          </div>
-        </section>
-
         <section id="download" className={styles.downloadSection} aria-labelledby="download-title">
+          <div className={styles.downloadLogo}><Image src="/assets/logo.png" alt="" width={92} height={92} /></div>
           <div className={styles.downloadCopy}>
-            <p className={styles.kicker}>Your place is here</p>
-            <h2 id="download-title">Start with uNepal.</h2>
-            <p>Everything Nepalese life needs, together in one thoughtfully designed app.</p>
+            <p className={styles.kicker}>Start with uNepal</p>
+            <h2 id="download-title">Your Nepalese world,<br />ready when you are.</h2>
+            <p>Download uNepal and bring community, discovery and everyday usefulness into one place.</p>
+            <StoreBadges compact />
           </div>
-          <div className={styles.storeChoices}>
-            <a className={styles.storeCard} href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer">
-              <AndroidLogo weight="fill" aria-hidden="true" />
-              <span><small>Google Play</small><strong>Download for Android</strong></span>
-              <ArrowRight weight="bold" aria-hidden="true" />
-            </a>
-            <a className={`${styles.storeCard} ${styles.storeCardMuted}`} href={IOS_APP_STORE_URL} target="_blank" rel="noreferrer">
-              <AppleLogo weight="fill" aria-hidden="true" />
-              <span><small>App Store</small><strong>View the iPhone app</strong></span>
-              <ArrowRight weight="bold" aria-hidden="true" />
-            </a>
+          <div className={styles.downloadDecor} aria-hidden="true">
+            <span><UsersThree weight="fill" /></span>
+            <span><Handbag weight="fill" /></span>
+            <span><Play weight="fill" /></span>
           </div>
         </section>
       </main>
@@ -244,6 +230,7 @@ export default function EditorialLanding() {
         <a className={styles.footerBrand} href="#top" aria-label="uNepal home"><Image src="/assets/logo.png" alt="" width={46} height={46} /><span>uNepal</span></a>
         <p>Made for Nepalese people.</p>
         <nav aria-label="Legal links"><a href="/privacy">Privacy</a><a href="/terms">Terms</a><a href="/child-safety-standards">Safety</a><a href="mailto:info@unepal.com">Contact</a></nav>
+        <small className={styles.trademark}>Apple and the Apple logo are trademarks of Apple Inc. Google Play and the Google Play logo are trademarks of Google LLC.</small>
       </footer>
     </div>
   );
