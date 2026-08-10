@@ -131,7 +131,7 @@ export default function EditorialLanding() {
             <div className={styles.phoneFrame}>
               <div className={styles.phoneSpeaker} aria-hidden="true" />
               <div className={styles.phoneScreen}>
-                <Image src="/assets/app-ui/home-feed.webp" alt="The uNepal app home feed" width={720} height={1600} priority sizes="(max-width: 800px) 72vw, 340px" />
+                <Image src="/assets/app-ui/home-feed.webp" alt="The uNepal app home feed" width={720} height={1600} priority loading="eager" sizes="(max-width: 800px) 72vw, 340px" />
               </div>
             </div>
 
@@ -152,7 +152,7 @@ export default function EditorialLanding() {
         </section>
 
         <section id="discover" className={styles.lifeBanner} aria-labelledby="life-banner-title">
-          <Image src="/assets/editorial/hero-nepalese-life.webp" alt="Nepalese people connecting in a lively Kathmandu neighbourhood" fill sizes="100vw" className={styles.cover} />
+          <Image src="/assets/editorial/hero-nepalese-life.webp" alt="Nepalese people connecting in a lively Kathmandu neighbourhood" fill loading="eager" sizes="100vw" className={styles.cover} />
           <div className={styles.lifeShade} aria-hidden="true" />
           <div className={styles.lifeCopy}>
             <p>Made for all Nepalese people</p>
