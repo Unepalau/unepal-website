@@ -62,14 +62,14 @@ function AppIcon({ name, size = 20 }: { name: keyof typeof appIcons; size?: numb
   return <Image src={appIcons[name]} alt="" width={size} height={size} aria-hidden="true" />;
 }
 
-function StoreBadges({ compact = false }: { compact?: boolean }) {
+function StoreBadges({ compact = false, eager = false }: { compact?: boolean; eager?: boolean }) {
   return (
     <div className={`${styles.storeBadges} ${compact ? styles.storeBadgesCompact : ''}`} aria-label="Download uNepal">
       <a href={IOS_APP_STORE_URL} target="_blank" rel="noreferrer" aria-label="Download uNepal on the App Store">
-        <Image src="/assets/store-badges/app-store.svg" alt="Download on the App Store" width={120} height={40} />
+        <Image src="/assets/store-badges/app-store.svg" alt="Download on the App Store" width={120} height={40} loading={eager ? "eager" : "lazy"} />
       </a>
       <a href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer" aria-label="Get uNepal on Google Play">
-        <Image src="/assets/store-badges/google-play.png" alt="Get it on Google Play" width={646} height={250} />
+        <Image src="/assets/store-badges/google-play.png" alt="Get it on Google Play" width={646} height={250} loading={eager ? "eager" : "lazy"} />
       </a>
     </div>
   );
@@ -161,7 +161,7 @@ function MarketingBazaarCard({ compact = false, category = 'Housing' }: { compac
         <p><MapPin weight="fill" aria-hidden="true" />{listing.location}</p>
         {!compact ? <small>{listing.meta}</small> : null}
       </div>
-      {category === 'Housing' ? <Image src="/assets/marketing/room-kathmandu.webp" alt="Bright furnished room used for a fictional uNepal Bazaar listing" width={1600} height={900} /> : <span className={styles.listingIcon}>{category === 'Jobs' ? <Briefcase /> : category === 'Services' ? <Wrench /> : <ShoppingBagOpen />}</span>}
+      {category === 'Housing' ? <Image src="/assets/marketing/room-kathmandu.webp" alt="Bright furnished room used for a fictional uNepal Bazaar listing" width={1600} height={900} sizes="(max-width: 620px) 92vw, (max-width: 900px) 55vw, 42vw" /> : <span className={styles.listingIcon}>{category === 'Jobs' ? <Briefcase /> : category === 'Services' ? <Wrench /> : <ShoppingBagOpen />}</span>}
     </article>
   );
 }
@@ -169,7 +169,7 @@ function MarketingBazaarCard({ compact = false, category = 'Housing' }: { compac
 function MarketingVideoCard({ compact = false }: { compact?: boolean }) {
   return (
     <article id="hamro-tv" className={`${styles.videoCard} ${compact ? styles.videoCardCompact : ''}`}>
-      <Image src="/assets/marketing/community-stories.webp" alt="A fictional Hamro TV community storytelling studio" width={1600} height={900} loading="eager" />
+      <Image src="/assets/marketing/community-stories.webp" alt="A fictional Hamro TV community storytelling studio" width={1600} height={900} sizes="(max-width: 620px) 92vw, (max-width: 900px) 88vw, 45vw" />
       <div className={styles.videoOverlay}>
         <span><VideoCamera weight="fill" aria-hidden="true" />Hamro TV</span>
         <h3>Community Stories</h3>
@@ -265,6 +265,25 @@ export default function LandingPage() {
   const [activeFeature, setActiveFeature] = useState<FeatureTab>('Community');
   const [bazaarCategory, setBazaarCategory] = useState<BazaarCategory>('Housing');
 
+  const focusFeature = (feature: FeatureTab) => {
+    setActiveFeature(feature);
+    requestAnimationFrame(() => document.getElementById(`feature-tab-${feature.toLowerCase().replaceAll(' ', '-').replace('&', 'and')}`)?.focus());
+  };
+
+  const handleFeatureKeyDown = (event: React.KeyboardEvent<HTMLButtonElement>, feature: FeatureTab) => {
+    const currentIndex = featureTabs.indexOf(feature);
+    let nextIndex = currentIndex;
+
+    if (event.key === 'ArrowRight') nextIndex = (currentIndex + 1) % featureTabs.length;
+    else if (event.key === 'ArrowLeft') nextIndex = (currentIndex - 1 + featureTabs.length) % featureTabs.length;
+    else if (event.key === 'Home') nextIndex = 0;
+    else if (event.key === 'End') nextIndex = featureTabs.length - 1;
+    else return;
+
+    event.preventDefault();
+    focusFeature(featureTabs[nextIndex]);
+  };
+
   return (
     <div className={styles.page}>
       <MarketingNavBar mobileMenuOpen={mobileMenuOpen} onToggle={() => setMobileMenuOpen((open) => !open)} />
@@ -275,7 +294,7 @@ export default function LandingPage() {
               <p className={styles.heroEyebrow}><span>uNepal</span> / Hamro Social Network</p>
               <h1 id="hero-title">Your Nepalese world.<br /><span>One connected place.</span></h1>
               <p>Community, Bazaar, videos and everyday connection—thoughtfully brought together in one app.</p>
-              <StoreBadges />
+              <StoreBadges eager />
             </div>
             <div className={styles.heroVisual} aria-label="Curated uNepal marketing preview">
               <div className={styles.heroShell}><MarketingAppShell compact /></div>
@@ -289,12 +308,29 @@ export default function LandingPage() {
           <h2 id="feature-demo-title" className={styles.srOnly}>Explore uNepal features</h2>
           <div className={styles.featureTabs} role="tablist" aria-label="Explore uNepal features">
             {featureTabs.map((feature) => (
-              <button key={feature} type="button" role="tab" aria-selected={activeFeature === feature} aria-controls="feature-preview" onClick={() => setActiveFeature(feature)}>
+              <button
+                id={`feature-tab-${feature.toLowerCase().replaceAll(' ', '-').replace('&', 'and')}`}
+                key={feature}
+                type="button"
+                role="tab"
+                tabIndex={activeFeature === feature ? 0 : -1}
+                aria-selected={activeFeature === feature}
+                aria-controls="feature-preview"
+                onClick={() => setActiveFeature(feature)}
+                onKeyDown={(event) => handleFeatureKeyDown(event, feature)}
+              >
                 <FeatureIcon feature={feature} /><span>{feature}</span>
               </button>
             ))}
           </div>
-          <div id="feature-preview" className={styles.featurePanel} role="tabpanel">
+          <div
+            id="feature-preview"
+            key={activeFeature}
+            className={styles.featurePanel}
+            role="tabpanel"
+            tabIndex={0}
+            aria-labelledby={`feature-tab-${activeFeature.toLowerCase().replaceAll(' ', '-').replace('&', 'and')}`}
+          >
             <div className={styles.featureCopy}>
               <p className={styles.kicker}>Inside uNepal</p>
               <h2>{activeFeature === 'Community' ? 'Stay close to your community.' : activeFeature === 'Bazaar' ? 'Find local value with less noise.' : activeFeature === 'Jobs & Housing' ? 'Make the next move easier.' : activeFeature === 'Discover' ? 'See what is happening around you.' : 'Watch stories that feel closer.'}</h2>
