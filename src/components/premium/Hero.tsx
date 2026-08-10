@@ -44,10 +44,6 @@ export default function Hero() {
               </a>
             ))}
           </nav>
-          <div className="hero-dock__status">
-            <span><i className="status-dot status-dot--live" />Android 5.0.5 <strong>Live</strong></span>
-            <span><i className="status-dot status-dot--review" />iOS 5.0.5 <strong>Waiting for Review</strong></span>
-          </div>
         </div>
       </div>
     </section>

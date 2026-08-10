@@ -24,7 +24,7 @@
 - Spacing and layout rhythm: passed. The implementation combines option 1's image-dominant hero and lower dock with option 2's broad discovery rows. Desktop margins, hero radius, dock placement, section gaps, and mobile stacking remain stable without horizontal overflow.
 - Colors and visual tokens: passed. Warm white, parchment, vermilion, deep blue, and small green/amber status accents match the selected direction without returning to a dark or overly colorful page.
 - Image quality and asset fidelity: passed. All major visual surfaces use purpose-generated raster assets at their intended crops. The exact supplied uNepal symbol is used in the header and footer. Phosphor provides a single consistent icon family; no CSS art, handcrafted SVGs, emoji, placeholders, full app screenshots, or screenshot wall are used.
-- Copy and content: passed. The site says “Nepalese,” represents Nepalese people broadly, presents Android 5.0.5 as available, presents iOS 5.0.5 as Waiting for Review, and includes no fabricated ratings, testimonials, awards, or user counts.
+- Copy and content: passed. The site says “Nepalese,” represents Nepalese people broadly, keeps platform links concise without release-status clutter, and includes no fabricated ratings, testimonials, awards, or user counts.
 - Responsive behavior: passed at 1440 × 1024 and 390 × 844. Hero artwork, CTA, discovery controls, chapter imagery, and Bazaar copy remain readable and usable. The mobile navigation opens, closes after a navigation choice, and scrolls to the selected section.
 - Accessibility: passed for the implemented scope. Landmarks, headings, button/link names, image alternatives, keyboard focus styling, status text, reduced-motion handling, and practical mobile tap targets are present.
 - Browser console: no errors. Development-only React and HMR messages were observed; no runtime exception was present.
@@ -34,7 +34,7 @@
 - Primary header navigation and all homepage anchors work.
 - Mobile menu opens, reports its expanded state, closes on selection, and navigates to the chosen section.
 - The five discovery controls update the selected state and prompt, then scroll to their relevant section.
-- Android and iOS download links use the existing store destinations and preserve the correct public release wording.
+- Android and iPhone download links use the existing store destinations with simple platform-focused labels.
 
 ## Comparison history
 

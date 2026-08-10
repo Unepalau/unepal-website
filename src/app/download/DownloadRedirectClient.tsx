@@ -11,17 +11,16 @@ export default function DownloadRedirectClient() {
             <Image src="/assets/logo.png" alt="" width={42} height={42} className="h-10 w-10 object-contain" />
             <span className="font-display text-2xl font-extrabold tracking-[-.04em] text-[#E60023]">uNepal</span>
           </Link>
-          <span className="eyebrow mt-12">Version 5.0.5</span>
+          <span className="eyebrow mt-12">Get the app</span>
           <h1 className="mt-6 max-w-xl font-display text-[3rem] font-extrabold leading-[.94] tracking-[-.06em] text-[#071632] sm:text-6xl">Your Nepalese world, ready to go.</h1>
           <p className="mt-6 max-w-lg text-base font-medium leading-8 text-[#65676B] sm:text-lg">Community, Bazaar, Hamro TV, events, businesses, and everyday connection in one app.</p>
 
           <div className="mt-9 grid gap-4">
             <a href={ANDROID_PLAY_STORE_URL} className="rounded-[18px] border border-[#E60023] bg-[#FFF2F4] p-5 shadow-[0_8px_20px_rgba(7,22,50,.08)] transition hover:-translate-y-0.5">
-              <span className="flex items-center justify-between gap-4"><span><span className="block text-xs font-extrabold uppercase tracking-[.11em] text-[#E60023]">Available now</span><span className="mt-1 block font-display text-xl font-extrabold text-[#071632]">Get it on Google Play</span></span><span className="text-2xl text-[#E60023]" aria-hidden="true">→</span></span>
+              <span className="flex items-center justify-between gap-4"><span><span className="block text-xs font-extrabold uppercase tracking-[.11em] text-[#E60023]">Google Play</span><span className="mt-1 block font-display text-xl font-extrabold text-[#071632]">Download for Android</span></span><span className="text-2xl text-[#E60023]" aria-hidden="true">→</span></span>
             </a>
             <a href={IOS_APP_STORE_URL} className="rounded-[18px] border border-[#E4E6EB] bg-white p-5 transition hover:-translate-y-0.5 hover:border-[#0B4EA2] hover:bg-[#F2F5FA]">
-              <span className="flex items-center justify-between gap-4"><span><span className="block text-xs font-extrabold uppercase tracking-[.11em] text-[#0B4EA2]">Waiting for Review</span><span className="mt-1 block font-display text-xl font-extrabold text-[#071632]">View App Store listing</span></span><span className="text-2xl text-[#0B4EA2]" aria-hidden="true">→</span></span>
-              <span className="mt-2 block text-xs font-medium leading-5 text-[#65676B]">iOS 5.0.5 is not yet confirmed publicly live.</span>
+              <span className="flex items-center justify-between gap-4"><span><span className="block text-xs font-extrabold uppercase tracking-[.11em] text-[#0B4EA2]">App Store</span><span className="mt-1 block font-display text-xl font-extrabold text-[#071632]">View the iPhone app</span></span><span className="text-2xl text-[#0B4EA2]" aria-hidden="true">→</span></span>
             </a>
           </div>
 
@@ -32,7 +31,7 @@ export default function DownloadRedirectClient() {
           <div className="absolute left-1/2 top-12 w-[20rem] -translate-x-1/2 rotate-2 overflow-hidden rounded-[34px] border-[9px] border-[#111827] bg-white shadow-[0_36px_80px_rgba(0,0,0,.36)] sm:w-[24rem] lg:top-20">
             <Image src="/assets/app-ui/home-feed.webp" alt="Real uNepal home feed" width={720} height={1600} className="h-auto w-full" priority />
           </div>
-          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/12 bg-[#071632]/80 px-4 py-2 text-xs font-bold text-white/72 backdrop-blur">Real uNepal 5.0.5 interface</p>
+          <p className="absolute bottom-5 left-1/2 -translate-x-1/2 whitespace-nowrap rounded-full border border-white/12 bg-[#071632]/80 px-4 py-2 text-xs font-bold text-white/72 backdrop-blur">A real uNepal interface</p>
         </section>
       </div>
     </main>

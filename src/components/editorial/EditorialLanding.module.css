@@ -125,14 +125,6 @@
 .textLink { display: inline-flex; align-items: center; gap: 8px; color: var(--ink); font-size: 14px; font-weight: 700; }
 .textLink span { color: var(--red); font-size: 18px; }
 
-.releaseRow { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 28px; color: #606675; font-size: 12px; }
-.releaseRow span { display: inline-flex; align-items: center; gap: 8px; }
-.releaseRow strong { color: var(--ink); font-weight: 750; }
-.releaseRow svg { width: 17px; height: 17px; }
-.releaseRow i { width: 8px; height: 8px; border-radius: 99px; }
-.liveDot { background: #21af78; box-shadow: 0 0 0 4px rgba(33, 175, 120, 0.12); }
-.reviewDot { background: #efa51e; box-shadow: 0 0 0 4px rgba(239, 165, 30, 0.13); }
-
 .heroMoment {
   position: absolute;
   z-index: 4;
@@ -287,7 +279,6 @@
   .heroIntro { max-width: 420px; margin-top: 20px; font-size: 15px; }
   .heroActions { align-items: flex-start; flex-direction: column; gap: 14px; margin-top: 22px; }
   .primaryButton { min-height: 50px; }
-  .releaseRow { display: none; }
   .heroMoment { display: none; }
   .discoveryDock { right: 14px; bottom: 14px; left: 14px; min-height: 0; border-radius: 16px; }
   .searchPrompt { min-height: 54px; padding: 0 17px; font-size: 12px; }

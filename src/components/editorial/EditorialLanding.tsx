@@ -8,7 +8,6 @@ import {
   CalendarBlank,
   ChatCircleText,
   Handbag,
-  Hourglass,
   List,
   MagnifyingGlass,
   MapPin,
@@ -103,10 +102,6 @@ export default function EditorialLanding() {
               <a className={styles.textLink} href="#discover">Explore the experience <span aria-hidden="true">↓</span></a>
             </div>
 
-            <div className={styles.releaseRow} aria-label="Current app release status">
-              <span><i className={styles.liveDot} aria-hidden="true" /><AndroidLogo weight="fill" aria-hidden="true" /> Android 5.0.5 <strong>Available now</strong></span>
-              <span><i className={styles.reviewDot} aria-hidden="true" /><AppleLogo weight="fill" aria-hidden="true" /> iOS 5.0.5 <strong>Waiting for Review</strong></span>
-            </div>
           </div>
 
           <aside className={styles.heroMoment} aria-label="Featured community moment">
@@ -233,12 +228,12 @@ export default function EditorialLanding() {
           <div className={styles.storeChoices}>
             <a className={styles.storeCard} href={ANDROID_PLAY_STORE_URL} target="_blank" rel="noreferrer">
               <AndroidLogo weight="fill" aria-hidden="true" />
-              <span><small>Android 5.0.5</small><strong>Available now</strong></span>
+              <span><small>Google Play</small><strong>Download for Android</strong></span>
               <ArrowRight weight="bold" aria-hidden="true" />
             </a>
             <a className={`${styles.storeCard} ${styles.storeCardMuted}`} href={IOS_APP_STORE_URL} target="_blank" rel="noreferrer">
               <AppleLogo weight="fill" aria-hidden="true" />
-              <span><small>iOS 5.0.5</small><strong><Hourglass weight="bold" aria-hidden="true" /> Waiting for Review</strong></span>
+              <span><small>App Store</small><strong>View the iPhone app</strong></span>
               <ArrowRight weight="bold" aria-hidden="true" />
             </a>
           </div>
